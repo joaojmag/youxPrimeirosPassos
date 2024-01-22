@@ -56,8 +56,8 @@ const cliente = [
 let prodNaoExiste = 0;
 let estoqueInuficiente = 0;
 
-function verificaCodClient() {
-    cliente.forEach((element, index) => {
+function verificaCodClient(c) {
+    c.forEach((element, index) => {
         if (element.codCli !== 0) {
             verificarCodProd(element.codPro, index);
             //console.log('Index', element.codCli, index)
@@ -81,6 +81,8 @@ function verificarCodProd(valor, indice) {
 
 function verificarEstoque(index) {
     if (cliente[index].quant <= totalDeProEstoque[cliente[index].codPro - 1]) {
+        // número 1 é para acerta a posição do vetor totalDeProEstoque pois o cliente[index].codPro começa em 1, e para acessar 
+        // a posição 0 temos que subitrair - 1
         // Altera o valor no array totalDeProEstoque
         totalDeProEstoque[cliente[index].codPro - 1] = totalDeProEstoque[cliente[index].codPro - 1] - cliente[index].quant
         //console.log('valor estoque ', totalDeProEstoque[cliente[index].codPro - 1])
@@ -90,8 +92,9 @@ function verificarEstoque(index) {
 }
 
 
-verificaCodClient();
+verificaCodClient(cliente);
 console.log('==================')
+
 for (let i in codProdutos) {
     console.log(`código: ${codProdutos[i]} | estoque: ${totalDeProEstoque[i]}`)
 }
