@@ -21,7 +21,7 @@
 
 
 
-const nomes = [2, 4, 1, 10, 4, 2, 1];
+let nomes = [2, 4, 1, 10, 4, 2, 1];
 
 
 //let nomes = ["Alice", "Bob", "Tiff", "Bruce", "Alice"];
@@ -35,4 +35,14 @@ let quantidadeNomes = nomes.reduce(function (todosNomes, nome) {
   return todosNomes;
 }, {});
 
+const valores = Object.values(quantidadeNomes)
 console.log(quantidadeNomes)
+
+let  contaMais = 0;
+let varIn = valores[0]
+for (let i of valores) {
+  if (i === varIn){
+    contaMais++
+
+  }
+}
