@@ -1,6 +1,6 @@
 let num = 7;
 
-let vetornumeros = [];
+let vetornumeros[0] = num;
 let valor = 0;
 do {
     let numM = multNum(num);
