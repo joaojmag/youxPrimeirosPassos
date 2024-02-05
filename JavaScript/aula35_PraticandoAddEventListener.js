@@ -30,3 +30,7 @@ btn2.addEventListener('click', () => {
         caixa1.appendChild(el)
     })
 })
+
+// Outra solição é usar 
+// :not(.seleciona) vai pegar todo que não tem o a classe .seleciona
+// .curso:not(.seleciona) vai pegar todo que não tem a classe .seleciona de quem tem a classe .curso
