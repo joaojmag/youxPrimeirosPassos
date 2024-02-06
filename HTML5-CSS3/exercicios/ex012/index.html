@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vídeos com hmtl 5</title>
+</head>
+
+<body>
+    <h1>Inserindo vídeos hospedados localmente</h1>
+    <p>Esse vídeo está hospedado no meu próprio servirdor.</p>
+    <video src="caminho_do_video" width="500" controls></video>
+
+    <video width="500" poster="imagem inicial do video" controls>
+        <!--width="500" para tamanho | poster"imagem inicial do video" para criar a capa di video-->
+        <source src="caminho_do_video/video.mp4" type="video/mp4">
+        <source src="caminho_do_video/video.m4v" type="video/mp4">
+        <source src="caminho_do_video/video.webm" type="video/webm">
+        <source src="caminho_do_video/video.ogv" type="video/ogg">
+        <p>Seu navegador não consegue abrir o video</p>
+    </video>
+    <h1>Inserir videos do Youtube</h1>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/3hng-hmSv2Y?si=Ch8D_s5p9nQvDsBH"
+        title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
+</body>
+
+</html>
