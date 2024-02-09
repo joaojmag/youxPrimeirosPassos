@@ -6,7 +6,7 @@
     font-size: large;
 }
 
-.carros {
+.carros{
     display: flex;
     width: 100%;
     border: 3px solid black;
@@ -21,7 +21,6 @@
     border-radius: 5px;
     display: flex;
     width: 200px;
-    flex-direction: column;
 }
 
 .campoForm {
@@ -31,20 +30,16 @@
     margin-bottom: 10px;
 }
 
-.campoForm input {
+.campoForm input{
     background-color: #eee;
     padding: 5px;
     border-radius: 5px;
     border: 1px solid black;
 }
 
-.campoForm button {
+.campoForm button{
     background-color: #888;
     cursor: pointer;
     padding: 5px;
     border-radius: 5px;
-}
-
-.ponteiro {
-    cursor: pointer;
 }
