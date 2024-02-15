@@ -1,6 +1,6 @@
 const numero = document.getElementById('numero')
 
-let promeca = new Promise((resolve, reject) => {
+let promessa = new Promise((resolve, reject) => {
     let resultado = true
     let tempo = 3000
     setTimeout(() => {
@@ -11,12 +11,12 @@ let promeca = new Promise((resolve, reject) => {
     }, tempo)
 })
 
-promeca.then((retorno) => {
+promessa.then((retorno) => {
     numero.innerHTML = retorno
     numero.classList.remove('erro')
     numero.classList.add('ok')
 })
-promeca.catch((retorno) => {
+promessa.catch((retorno) => {
     numero.innerHTML = retorno
     numero.classList.add('erro')
     numero.classList.remove('ok')
