@@ -3,13 +3,13 @@ class Membro extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            nome: this.props.nome
+            nome: props.nome
         }
         this.entrar = this.entrar.bind(this)
     }
 
-    entrar() {
-        this.setState({ nome: 'João' })
+    entrar(_nome) {
+        this.setState({ nome: _nome })
     }
 
 
@@ -17,7 +17,7 @@ class Membro extends Component {
         return (
             <div>
                 <h1>Bem vindo {this.state.nome}</h1>
-                <button onClick={this.entrar}>Entrar como João</button>
+                <button onClick={() => this.entrar('João Marcelo')} style={{ cursor: 'pointer' }} >Entrar como João</button>
                 <button onClick={() => this.setState({ nome: '' })}>Sair</button>
             </div>
         );
@@ -25,3 +25,5 @@ class Membro extends Component {
 }
 
 export default Membro;
+
+// para usar rode o comando npm install para baixar a pasta node_modulos
