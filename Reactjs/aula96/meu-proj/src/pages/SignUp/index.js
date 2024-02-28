@@ -1,15 +1,22 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-// import './signin.css'
+import { AuthContext } from '../../contexts/auth'
 
 import logo from '../../assets/logo.png';
 
 export default function SignUp() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
-    const [passwor, setPassword] = useState('');
+    const [password, setPassword] = useState('');
 
+    const { signUp } = useContext(AuthContext)
 
+    function handleSubmit(e) {
+        e.preventDefault();
+        if (name !== '' && email !== '' && password !== '') {
+            signUp(name, email, password)
+        }
+    }
 
     return (
         <div className='contaier-center'>
@@ -17,7 +24,7 @@ export default function SignUp() {
                 <div className='login-area'>
                     <img src={logo} alt='Logo do sistema de chamadas' />
                 </div>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <h1>Nova Conta</h1>
                     <input type='text'
                         placeholder='Seu nome'
@@ -33,7 +40,7 @@ export default function SignUp() {
 
                     <input type='password'
                         placeholder='********'
-                        value={passwor}
+                        value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
 
