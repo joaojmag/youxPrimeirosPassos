@@ -10,7 +10,8 @@ function RoutesApp() {
         <Routes>
             <Route path='/' element={<SignIn />} />
             <Route path='/register' element={<SignUp />} />
-            <Route path='/dashboard' element={<Private> <Dashboard /> </Private>} />
+            {/* <Route path='/dashboard' element={<Private> <Dashboard /> </Private>} /> para deslogar da página */}
+            <Route path='/dashboard' element={<Dashboard />} />
         </Routes>
     );
 }

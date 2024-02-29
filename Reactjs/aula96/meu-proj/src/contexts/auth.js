@@ -31,7 +31,7 @@ function AuthProvider({ children }) {
                     email: email,
                     senha: password
                 }
-                setUser(data)
+                // setUser(data)
                 break;
             }
             // toast.error('Ops senha ou usuário incorretos ')
@@ -47,7 +47,8 @@ function AuthProvider({ children }) {
             uid: Math.random(),
             nome: name,
             email: email,
-            senha: password
+            senha: password,
+            avatarUrl: null
         }
         setUser(data)
         storageUser(data)
