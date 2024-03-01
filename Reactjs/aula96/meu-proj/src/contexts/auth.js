@@ -27,11 +27,12 @@ function AuthProvider({ children }) {
                 navigate('/dashboard')
                 toast.success('Bem vindo de volta!')
                 let data = {
-                    uid: Math.random(),
+                    nome: `${e.nome}`,
                     email: email,
                     senha: password
                 }
-                // setUser(data)
+                setDadosLogin({})
+                setDadosLogin(data)
                 break;
             }
             // toast.error('Ops senha ou usuário incorretos ')
@@ -50,6 +51,8 @@ function AuthProvider({ children }) {
             senha: password,
             avatarUrl: null
         }
+        setDadosLogin({})
+        setDadosLogin(data)
         setUser(data)
         storageUser(data)
         toast.success('Seja benvindo ao sistema')
@@ -67,7 +70,7 @@ function AuthProvider({ children }) {
     }
 
     return (
-        <AuthContext.Provider value={{ signed: !!user, user, signIn, signUp, logout }}>
+        <AuthContext.Provider value={{ signed: !!user, user, signIn, signUp, logout, storageUser, setUser, dadosLogin}}>
             {children}
         </AuthContext.Provider>
     );
