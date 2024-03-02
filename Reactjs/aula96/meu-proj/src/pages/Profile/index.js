@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, createContext } from 'react';
 import Header from '../../components/Header'
 import Title from '../../components/Title';
 import { FiSettings, FiUpload } from 'react-icons/fi';
@@ -6,11 +6,26 @@ import avatar from '../../assets/avatar.png'
 import { AuthContext } from '../../contexts/auth'
 import './profile.css'
 
-export default function Profile() {
+export const ProfileContext = createContext({});
+
+export default function Profile({ children }) {
     const { user, storageUser, setUser, dadosLogin, logout } = useContext(AuthContext)
     // const [avatarUrl, setAvatarUrl] = useState(avatar)
     const [nome, setNome] = useState(dadosLogin.nome)
     const [email, setEmail] = useState(dadosLogin.email)
+    const [imageAvatar, setImageAvatar] = useState(avatar);
+
+
+    function handleFile(e) {
+        console.log(e.target.files);
+        if (e.target.files[0]) {
+            const fig = e.target.files[0];
+            if (fig.type === "image/png" || fig.type === "image/jpeg") {
+                setImageAvatar(URL.createObjectURL(fig))
+            }
+        } else
+            alert('Temque ser um arquivo PNG ou JPEG');
+    }
 
     return (
         <div>
@@ -27,8 +42,8 @@ export default function Profile() {
                             <samp>
                                 <FiUpload color='#fff' size={25} />
                             </samp>
-                            <input type='file' accept='image/*' /> <br />
-                            {<img src={avatar} />}
+                            <input type='file' accept='image/*' onChange={handleFile} /> <br />
+                            {<img src={imageAvatar} />}
                         </label>
 
                         <label>Nome</label>
@@ -50,6 +65,11 @@ export default function Profile() {
                 </div>
             </div>
 
+
+            <ProfileContext.Provider value={{ imageAvatar }}>
+                {children}
+            </ProfileContext.Provider>
         </div>
+
     );
 }

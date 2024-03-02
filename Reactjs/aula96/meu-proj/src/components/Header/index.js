@@ -4,15 +4,17 @@ import { Link } from 'react-router-dom'
 import './header.css'
 
 import { AuthContext } from '../../contexts/auth'
+import { ProfileContext } from '../../pages/Profile'
 import { FiHome, FiUser, FiSettings } from 'react-icons/fi'
 
 export default function Header() {
     const { user } = useContext(AuthContext)
+    const { imageAvatar } = useContext(ProfileContext)
 
     return (
         <div className='sidebar'>
             <div>
-                <img src={avatarImg} alt='Foto do usuario' />
+                <img src={imageAvatar} alt='Foto do usuario' />
             </div>
             <Link to='/dashboard'>
                 <FiHome color='#fff' size={24} />
