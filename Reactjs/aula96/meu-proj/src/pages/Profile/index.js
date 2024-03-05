@@ -1,20 +1,20 @@
-import { useContext, useState, createContext } from 'react';
+import { useContext, useState } from 'react';
 import Header from '../../components/Header'
 import Title from '../../components/Title';
 import { FiSettings, FiUpload } from 'react-icons/fi';
-import avatar from '../../assets/avatar.png'
+// import avatar from '../../assets/avatar.png'
 import { AuthContext } from '../../contexts/auth'
 import './profile.css'
+import {toast} from 'react-toastify'
 
-export const ProfileContext = createContext({});
 
-export default function Profile({ children }) {
-    const { user, storageUser, setUser, dadosLogin, logout } = useContext(AuthContext)
+function Profile() {
+    // const { user, storageUser, setUser, dadosLogin, logout, imageAvatar, setImageAvatar } = useContext(AuthContext)
+    const { dadosLogin, logout, imageAvatar, setImageAvatar, convertStrEmObj, storageUser, setUser} = useContext(AuthContext)
     // const [avatarUrl, setAvatarUrl] = useState(avatar)
     const [nome, setNome] = useState(dadosLogin.nome)
     const [email, setEmail] = useState(dadosLogin.email)
-    const [imageAvatar, setImageAvatar] = useState(avatar);
-
+    // const [imageAvatar, setImageAvatar] = useState(avatar);
 
     function handleFile(e) {
         console.log(e.target.files);
@@ -27,6 +27,32 @@ export default function Profile({ children }) {
             alert('Temque ser um arquivo PNG ou JPEG');
     }
 
+
+    function submeter(e) {
+        e.preventDefault();
+        convertStrEmObj().map(e => {
+            if (e.email == email) {
+                e.nome = nome
+                console.log('valro nome ' + e.nome);
+
+                let data = {
+                    uid: e.uid,
+                    nome: nome,
+                    email: e.email,
+                    senha: e.senha,
+                    avatarUrl: null
+                }
+
+                storageUser(data)
+                setUser(data)
+                toast.success('Atualizado com sucesso !!')
+            }
+
+
+        })
+
+    }
+
     return (
         <div>
             <Header />
@@ -37,7 +63,7 @@ export default function Profile({ children }) {
 
                 <div className='container'>
 
-                    <form className='form-profile'>
+                    <form className='form-profile' onSubmit={submeter}>
                         <label className='lable-avatar'>
                             <samp>
                                 <FiUpload color='#fff' size={25} />
@@ -65,11 +91,9 @@ export default function Profile({ children }) {
                 </div>
             </div>
 
-
-            <ProfileContext.Provider value={{ imageAvatar }}>
-                {children}
-            </ProfileContext.Provider>
         </div>
 
     );
 }
+
+export default Profile;
