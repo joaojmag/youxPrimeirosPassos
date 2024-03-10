@@ -6,7 +6,7 @@ import { FiPlusCircle } from 'react-icons/fi'
 import { AuthContext } from '../../contexts/auth'
 
 import './new.css';
-
+import { toast } from 'react-toastify'
 
 export default function New() {
   const { user, convertStrEmObj } = useContext(AuthContext);
@@ -52,6 +52,24 @@ export default function New() {
     console.log(customers[e.target.value].nomeFantasia);
   }
 
+  function handleRegister(e) {
+    e.preventDefault();
+    let data = {
+      created: new Date(),
+      cliente: customers[customerSelected].nomeFantasia,
+      clienteId: customers[customerSelected].id,
+      assunto: assunto,
+      complemento: complemento,
+      status: status,
+      userId: user.uid
+    }
+    sessionStorage.setItem(`@chamado${data.userId}`, JSON.stringify(data))
+    toast.success("Chamado registrado!")
+    setComplemento('')
+    setCustomerSelected(0)
+  }
+
+
   return (
     <div>
       <Header />
@@ -62,7 +80,7 @@ export default function New() {
         </Title>
 
         <div className="container">
-          <form className="form-profile">
+          <form className="form-profile" onSubmit={handleRegister}>
 
             <label>Clientes</label>
             {

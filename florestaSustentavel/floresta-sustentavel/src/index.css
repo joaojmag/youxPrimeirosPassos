@@ -1,0 +1,15 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.planode-fundo {
+  background: linear-gradient(111.65deg, #293322 28.52%, #ACBE4A 142.46%);
+/* background-size: 100px; */
+/* background-size: 500px; */
+}
+
+button {
+  cursor: pointer;
+}
