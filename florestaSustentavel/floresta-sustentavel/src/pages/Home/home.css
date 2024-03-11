@@ -123,16 +123,17 @@
     height: 100%;
 }
 
-/* 
+
 .mascara {
-    mask-image: url('../../assets/linhasSVG.svg');
+    mask-image: url('../../assets/linhasSVG2.svg');
     mask-repeat: no-repeat;
     mask-position: left;
-    mask-size: 150%;
-    width: 100%;
-    position: absolute;
-    left: 700px;
-} */
+    /* mask-size: 100%; */
+    /* width: 100%; */
+   /*  position: relative;
+    left: 0; 
+    top: 0; */
+}
 
 .video {
     /* width: 500px;
@@ -142,20 +143,20 @@
     align-items: center; */
 
 
-    /* position: relative;
-    width: 1110px;
-    height: 1298px;
-    left: 658px;
-    top: 0px; */
+    position: relative;
+    /* width: 100%; */
+    height: 100%;
+    left: -658px;
+    top: 0px;
 
 
 
     /* Video */
 
     /* position: relative; */
-    width: 528.29px;
+    /* width: 528.29px; */
     /* height: 567.3px; */
-    left: 0px;
+    /* left: 0px; */
     /* top: 0px; */
 
 }
