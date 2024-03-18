@@ -1,32 +1,33 @@
-import { useContext } from 'react'
+// import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import './header.css'
 
-import { AuthContext } from '../../contexts/auth'
-import { FiHome, FiUser, FiSettings } from 'react-icons/fi'
-
 export default function Header() {
-    // const { user, imageAvatar} = useContext(AuthContext)
-    const { imageAvatar } = useContext(AuthContext)
 
     return (
-        <div className='sidebar'>
-            <div>
-                <img src={imageAvatar} alt='Foto do usuario' />
-                {/* {console.log('img ->  ' + imageAvatar)}; */}
+        <div className='sidebar-primaria'>
+            <div className='sidebar-top'>
+                <Link to='/' className='sidebar-top-font-primario'>
+                    Início
+                </Link>
+                <Link to='/painel-florestal' className='sidebar-top-font-secundario'>
+                    {/* <FiUser color='#fff' size={24} /> */}
+                    Painel Florestal
+                </Link>
+                <Link to='/profile' className='sidebar-top-font-secundario'>
+                    {/* <FiSettings color='#fff' size={24} /> */}
+                    Ações e Resultados
+                </Link>
+                <Link to='/profile' className='sidebar-top-font-secundario'>
+                    {/* <FiSettings color='#fff' size={24} /> */}
+                    Painel Geo
+                </Link>
+                <Link to='/profile' className='sidebar-top-font-secundario'>
+                    {/* <FiSettings color='#fff' size={24} /> */}
+                    Rede
+                </Link>
             </div>
-            <Link to='/dashboard'>
-                <FiHome color='#fff' size={24} />
-                Chamados
-            </Link>
-            <Link to='/customers'>
-                <FiUser color='#fff' size={24} />
-                Clientes
-            </Link>
-            <Link to='/profile'>
-                <FiSettings color='#fff' size={24} />
-                Perfil
-            </Link>
+            <div className='sidebar-bottom'></div>
         </div>
     );
 }

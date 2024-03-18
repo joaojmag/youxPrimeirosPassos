@@ -1,0 +1,46 @@
+.div-mapa {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: right;
+}
+
+.painel-florestal {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 8px;
+
+    position: absolute;
+    width: 324px;
+    height: 48px;
+    left: 64px;
+    top: 136px;
+    color: #fff;
+
+}
+
+.painel-florestal h1 {
+    /* Painel Florestal */
+
+    width: 268px;
+    height: 42px;
+    font-family: 'Raleway', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 42px;
+
+    color: #FFFFFF;
+
+
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+

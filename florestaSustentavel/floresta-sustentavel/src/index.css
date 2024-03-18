@@ -1,14 +1,18 @@
-* {
+.planode-fundo {
+  background: linear-gradient(111.65deg, #293322 28.52%, #ACBE4A 142.46%);
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  height: 100% !important;
+
 }
 
-.planode-fundo {
-  background: linear-gradient(111.65deg, #293322 28.52%, #ACBE4A 142.46%);
-/* background-size: 100px; */
-/* background-size: 500px; */
+.imgfundo {
+  background-image: linear-gradient(111.65deg, #293322bb 28.52%, #adbe4a00 142.46%), url("./assets/PadraoFundo.png");
+  background-repeat: no-repeat;
+  background-size: 110%;
 }
+
 
 button {
   cursor: pointer;
