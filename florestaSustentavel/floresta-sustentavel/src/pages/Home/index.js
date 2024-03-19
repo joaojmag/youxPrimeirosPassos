@@ -10,7 +10,7 @@ import laptop from '../../assets/laptop.png'
 import filebarchart from '../../assets/file-bar-chart.png'
 import map from '../../assets/map.png'
 import share2 from '../../assets/share-2.png'
-import chevronRight from '../../assets/chevron-right.png'
+import chevronRight from '../../assets/chevron-right.svg'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 

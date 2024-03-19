@@ -2,45 +2,89 @@
     position: fixed;
     right: 0;
     top: 0;
-    width: 100%;
+    width: 0;
     height: 100%;
     display: flex;
     justify-content: right;
 }
 
 .painel-florestal {
+    padding-left: 5%;
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 0px;
-    gap: 8px;
-
-    position: absolute;
-    width: 324px;
-    height: 48px;
-    left: 64px;
-    top: 136px;
-    color: #fff;
-
+    flex-direction: column;
 }
 
-.painel-florestal h1 {
-    /* Painel Florestal */
+.btn-Painel-Florestal {
+    padding-left: 0;
+    margin-bottom: 1%;
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    outline: none;
 
-    width: 268px;
-    height: 42px;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Raleway';
     font-style: normal;
     font-weight: 700;
     font-size: 36px;
     line-height: 42px;
 
     color: #FFFFFF;
-
-
-    /* Inside auto layout */
-    flex: none;
-    order: 1;
-    flex-grow: 0;
 }
 
+.dvi-florestas-producao {
+    box-sizing: border-box;
+    display: flex;
+    max-height: 88px;
+    align-items: center;
+    gap: 27px;
+}
+
+.dvi-florestas-producao button {
+    padding-left: 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    /* background-color: transparent; */
+    background: #ABBF3B26;
+
+    border: none;
+    outline: none;
+    border: 1px solid #ABBF3B;
+    border-radius: 13px;
+    padding: 20px;
+
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 26px;
+
+    color: #FFFFFF;
+}
+
+.btn-Filtrar-Parametros {
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    height: 88px;
+    border: 1px solid #FFFFFF;
+    border-radius: 13px;
+    box-shadow: none;
+
+
+}
+
+/* Frame 13 */
+
+
+/* Auto layout */
+flex-direction: column;
+padding: 20px;
+
+position: absolute;
+width: 639px;
+left: 64px;
+top: 330px;
