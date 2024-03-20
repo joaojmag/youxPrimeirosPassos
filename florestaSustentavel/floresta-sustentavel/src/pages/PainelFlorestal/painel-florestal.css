@@ -25,6 +25,15 @@ h3 {
     color: #FFFFFF;
 }
 
+h4 {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+    color: #FFFFFF;
+}
+
 section {
     border-left: 3px solid #ABBF3B;
     padding-left: 5%;
@@ -38,14 +47,16 @@ hr {
 
 section div {
     display: flex;
-    gap: 3%;
+    flex-wrap: wrap;
+    gap: 3px 3%;
+    /* align-content: space-between; */
 }
 
 section div div {
     display: flex;
     flex-direction: column;
-/*     max-width: 192px;
- */}
+    width: 210px;
+}
 
 article {
     display: flex;
@@ -67,7 +78,7 @@ article {
     padding-left: 5%;
     display: flex;
     flex-direction: column;
-    max-width: 40%;
+    max-width: 42%;
 }
 
 
@@ -88,7 +99,7 @@ article {
     max-height: 88px;
     width: 100%;
     align-items: center;
-    gap: 13%;
+    justify-content: space-between;
 
 }
 
@@ -136,4 +147,19 @@ article {
     line-height: 26px;
 
     color: #FFFFFF;
+}
+
+.div-grafico {
+    display: flex;
+    gap: 10px 0;
+    max-width: 100% !important;
+}
+
+.div-infromacoes {
+   width: 1000px;
+    margin-top: 15%;
+}
+
+.div-infromacoes h3 {
+    line-height: 15px;
 }
