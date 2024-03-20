@@ -1,3 +1,58 @@
+h1 {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 42px;
+    color: #FFFFFF;
+}
+
+h2 {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 26px;
+    color: #FFFFFF;
+}
+
+h3 {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    color: #FFFFFF;
+}
+
+section {
+    border-left: 3px solid #ABBF3B;
+    padding-left: 5%;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(to right, rgb(255, 255, 255), rgba(255, 255, 255, 0));
+}
+
+section div {
+    display: flex;
+    gap: 3%;
+}
+
+section div div {
+    display: flex;
+    flex-direction: column;
+/*     max-width: 192px;
+ */}
+
+article {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
 .div-mapa {
     position: fixed;
     right: 0;
@@ -12,7 +67,10 @@
     padding-left: 5%;
     display: flex;
     flex-direction: column;
+    max-width: 40%;
 }
+
+
 
 .btn-Painel-Florestal {
     padding-left: 0;
@@ -22,22 +80,16 @@
     background-color: transparent;
     border: none;
     outline: none;
-
-    font-family: 'Raleway';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 36px;
-    line-height: 42px;
-
-    color: #FFFFFF;
 }
 
 .dvi-florestas-producao {
     box-sizing: border-box;
     display: flex;
     max-height: 88px;
+    width: 100%;
     align-items: center;
-    gap: 27px;
+    gap: 13%;
+
 }
 
 .dvi-florestas-producao button {
@@ -73,18 +125,15 @@
     border: 1px solid #FFFFFF;
     border-radius: 13px;
     box-shadow: none;
+    padding: 20px;
+    margin-top: 8%;
+    margin-bottom: 8%;
 
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 26px;
 
+    color: #FFFFFF;
 }
-
-/* Frame 13 */
-
-
-/* Auto layout */
-flex-direction: column;
-padding: 20px;
-
-position: absolute;
-width: 639px;
-left: 64px;
-top: 330px;
