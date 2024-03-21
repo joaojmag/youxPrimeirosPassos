@@ -1,7 +1,10 @@
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 import Header from '../../components/Header';
 import FlorestasDoBrasil from '../FlorestasDoBrasil'
+import ProducaoFlorestal from '../ProducaoFlorestal'
+
 import Footer from '../../components/Footer/index';
 
 import mapBrasil from '../../assets/map_brazil_9copy21.png'
@@ -17,11 +20,22 @@ import './painel-florestal.css'
 function PainelFlorestal() {
 
     const navegar = useNavigate();
-
+    const [isPage, setIsPage] = useState(true);
 
     function voltarPaginaInicial() {
         navegar('/')
     }
+
+    function irFlorestasDoBrasil() {
+        setIsPage(true)
+/*         navegar('/painel-florestal/florestas-brasil')
+ */    }
+
+    function irProducaoFlorestal() {
+        setIsPage(false)
+/*         navegar('/painel-florestal/producao-florestal')
+ */    }
+
 
     return (
         <div className='container-fluid row planode-fundo' >
@@ -36,13 +50,13 @@ function PainelFlorestal() {
                     </button>
 
                     <div className='dvi-florestas-producao'>
-                        <button><img src={VectorBR} /> Florestas do Brasil</button>
-                        <button> <img src={containerBox} />Produção Florestal</button>
+                        <button onClick={irFlorestasDoBrasil}><img src={VectorBR} /> Florestas do Brasil</button>
+                        <button onClick={irProducaoFlorestal}> <img src={containerBox} />Produção Florestal</button>
                     </div>
 
                     <button className='btn-Filtrar-Parametros'> <img src={slidershorizontal} />Filtrar Parâmetros</button>
 
-                    <FlorestasDoBrasil />
+                    {isPage ? <FlorestasDoBrasil /> : <ProducaoFlorestal />}
 
                 </div>
                 <Footer />
