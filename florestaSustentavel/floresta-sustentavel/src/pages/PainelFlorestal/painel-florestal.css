@@ -49,7 +49,6 @@ section div {
     display: flex;
     flex-wrap: wrap;
     gap: 3px 3%;
-    /* align-content: space-between; */
 }
 
 section div div {
@@ -80,8 +79,6 @@ article {
     flex-direction: column;
     max-width: 42%;
 }
-
-
 
 .btn-Painel-Florestal {
     padding-left: 0;

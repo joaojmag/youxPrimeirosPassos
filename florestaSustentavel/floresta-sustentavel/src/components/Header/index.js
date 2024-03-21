@@ -11,19 +11,15 @@ export default function Header() {
                     Início
                 </Link>
                 <Link to='/painel-florestal/florestas-brasil' className='sidebar-top-font-secundario'>
-                    {/* <FiUser color='#fff' size={24} /> */}
                     Painel Florestal
                 </Link>
-                <Link to='/profile' className='sidebar-top-font-secundario'>
-                    {/* <FiSettings color='#fff' size={24} /> */}
+                <Link to='/acoes-resultados' className='sidebar-top-font-secundario'>
                     Ações e Resultados
                 </Link>
                 <Link to='/profile' className='sidebar-top-font-secundario'>
-                    {/* <FiSettings color='#fff' size={24} /> */}
                     Painel Geo
                 </Link>
                 <Link to='/profile' className='sidebar-top-font-secundario'>
-                    {/* <FiSettings color='#fff' size={24} /> */}
                     Rede
                 </Link>
             </div>

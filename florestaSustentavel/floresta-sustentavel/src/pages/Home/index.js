@@ -24,6 +24,10 @@ function Home() {
         navegar('/painel-florestal/florestas-brasil');
     }
 
+    function acoesResultados() {
+        navegar('/acoes-resultados')
+    }
+
     return (
         <div className='container-fluid row planode-fundo'>
             <div className='container-fluid row planode-fundo imgfundo'>
@@ -43,7 +47,7 @@ function Home() {
                             </div>
                             <img src={chevronRight} />
                         </div>
-                        <div className='acesso-btn'>
+                        <div className='acesso-btn' onClick={acoesResultados}>
                             <div className='acesso-btn-div'><img src={filebarchart} /></div>
                             <div className='acesso-btn-text'>
                                 <h2>Ações e Resultados</h2>

@@ -28,13 +28,11 @@ function PainelFlorestal() {
 
     function irFlorestasDoBrasil() {
         setIsPage(true)
-/*         navegar('/painel-florestal/florestas-brasil')
- */    }
+    }
 
     function irProducaoFlorestal() {
         setIsPage(false)
-/*         navegar('/painel-florestal/producao-florestal')
- */    }
+    }
 
 
     return (
