@@ -6,7 +6,7 @@ function RoutesApp() {
     return (
         <Routes>
             <Route path='/' element={<Home />} />
-            <Route path='/painel-florestal' element={<PainelFlorestal />} />
+            <Route path='/painel-florestal/florestas-brasil' element={<PainelFlorestal />} />
         </Routes>
     );
 }

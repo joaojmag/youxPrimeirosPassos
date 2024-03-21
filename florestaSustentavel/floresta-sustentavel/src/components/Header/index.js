@@ -10,7 +10,7 @@ export default function Header() {
                 <Link to='/' className='sidebar-top-font-primario'>
                     Início
                 </Link>
-                <Link to='/painel-florestal' className='sidebar-top-font-secundario'>
+                <Link to='/painel-florestal/florestas-brasil' className='sidebar-top-font-secundario'>
                     {/* <FiUser color='#fff' size={24} /> */}
                     Painel Florestal
                 </Link>

@@ -21,7 +21,7 @@ function Home() {
     const navegar = useNavigate();
 
     function painelFlorestal() {
-        navegar('/painel-florestal');
+        navegar('/painel-florestal/florestas-brasil');
     }
 
     return (
