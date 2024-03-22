@@ -33,12 +33,36 @@
 
 .div-acompanhamento-resultados {
     display: flex;
-    justify-content: space-between ;
+    justify-content: space-between;
     width: 100%;
 }
 
-.div-section{
+.div-section {
     display: flex;
     flex-direction: column;
     gap: 20px;
+}
+
+.div-info-financeiro {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    justify-items: center;
+}
+
+.div-info-financeiro .filtro {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* Color */
+    background: rgba(255, 255, 255, 0.08);
+    border: 0.982822px solid #FFFFFF;
+    border-radius: 7.86258px;
+    /* Comprimento */
+    width: 238.83px;
+    height: 58.97px;
+}
+
+.div-info-financeiro .valor {
+   
 }
