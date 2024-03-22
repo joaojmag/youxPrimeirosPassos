@@ -16,10 +16,10 @@ export default function Header() {
                 <Link to='/acoes-resultados' className='sidebar-top-font-secundario'>
                     Ações e Resultados
                 </Link>
-                <Link to='/profile' className='sidebar-top-font-secundario'>
+                <Link to='/' className='sidebar-top-font-secundario'>
                     Painel Geo
                 </Link>
-                <Link to='/profile' className='sidebar-top-font-secundario'>
+                <Link to='/rede' className='sidebar-top-font-secundario'>
                     Rede
                 </Link>
             </div>

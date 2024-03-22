@@ -1,0 +1,78 @@
+.div-pagina-inicial-pai {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.div-pagina-inicial-pai img {
+    position: relative;
+    top: -130px;
+}
+
+.div-pagina-inicial {
+    display: flex;
+    flex-direction: column;
+    padding-left: 5%;
+    row-gap: 86px;
+}
+
+.div-pagina-inicial h1 {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 51px;
+    line-height: 60px;
+    width: 716px;
+    color: #ABBF3B;
+}
+
+.div-pagina-inicial h3 {
+    width: 559px;
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+    color: #FFFFFF;
+}
+
+.div-pagina-inicial button {
+    width: 420px;
+    height: 62.28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0 20px;
+    background: #85962B;
+    border-radius: 79px;
+    border: none;
+}
+
+.div-pagina-inicial h2 {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    color: #FFFFFF;
+}
+
+.div-pagina-inicial img {
+    position: static;
+}
+
+.div-pagina-intermediaria-pai {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.div-pagina-intermediaria-pai span {
+    display: flex;
+    justify-content: center;
+    width: 795px;
+    padding: 24px 94px;
+    border: 1px solid #FFFFFF;
+    border-radius: 61px;
+}

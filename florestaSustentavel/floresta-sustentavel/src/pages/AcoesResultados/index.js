@@ -62,14 +62,30 @@ function AcoesResultados() {
 
                         <div>
                             <div className='div-info-financeiro'>
-                                <div className='filtro'><h3>Filtro</h3> <img src={chevronDown}/></div>
-                                <div className='filtro'><h3>Filtro</h3> <img src={chevronDown}/></div>
-                                <div className='filtro'><h3>Filtro</h3> <img src={chevronDown}/></div>
-                                                                
-                                <div className='valor'><img src={badgeCent}/> <h2>Informação</h2> <h3>R$ 102.000,000</h3></div>
-                                <div className='valor'><img src={badgeCent}/> <h2>Informação</h2> <h3>R$ 102.000,000</h3></div>
-                                <div className='valor'><img src={badgeCent}/> <h2>Informação</h2> <h3>R$ 102.000,000</h3></div>
+                                <div className='filtro'><h3>Filtro</h3> <img src={chevronDown} /></div>
+                                <div className='filtro'><h3>Filtro</h3> <img src={chevronDown} /></div>
+                                <div className='filtro'><h3>Filtro</h3> <img src={chevronDown} /></div>
+
+                                <div className='valor'>
+                                    <img src={badgeCent} />
+                                    <div>
+                                        <h2>Informação</h2> <h3>R$ 102.000,000</h3>
+                                    </div>
+                                </div>
+                                <div className='valor'>
+                                    <img src={badgeCent} />
+                                    <div>
+                                        <h2>Informação</h2> <h3>R$ 102.000,000</h3>
+                                    </div>
+                                </div>
+                                <div className='valor'>
+                                    <img src={badgeCent} />
+                                    <div>
+                                        <h2>Informação</h2> <h3>R$ 102.000,000</h3>
+                                    </div>
+                                </div>
                                 
+
                             </div>
                             <div className='div-section'>
                                 <section>

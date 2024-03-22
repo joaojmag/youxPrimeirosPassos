@@ -48,21 +48,46 @@
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     justify-items: center;
+    margin-bottom: 5%;
 }
 
 .div-info-financeiro .filtro {
-    display: flex;
+    /* display: flex;
     justify-content: space-around;
     align-items: center;
-    /* Color */
+
     background: rgba(255, 255, 255, 0.08);
     border: 0.982822px solid #FFFFFF;
     border-radius: 7.86258px;
-    /* Comprimento */
+    
+    width: 238.83px;
+    height: 58.97px; */
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 17.6908px 11.7939px;
+    gap: 136.61px;
+    
     width: 238.83px;
     height: 58.97px;
+    
+    background: rgba(255, 255, 255, 0.08);
+    border: 0.982822px solid #FFFFFF;
+    border-radius: 7.86258px;
 }
 
 .div-info-financeiro .valor {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   padding: 17.6908px 11.7939px;
+   gap: 11.79px;
    
+   width: 238.83px;
+   height: 101.23px;
+   
+   background: rgba(171, 191, 59, 0.08);
+   border: 0.982822px solid #ABBF3B;
+   border-radius: 7.86258px;
 }

@@ -28,6 +28,10 @@ function Home() {
         navegar('/acoes-resultados')
     }
 
+    function irRede() {
+        navegar('/rede')
+    }
+
     return (
         <div className='container-fluid row planode-fundo'>
             <div className='container-fluid row planode-fundo imgfundo'>
@@ -63,7 +67,7 @@ function Home() {
                             </div>
                             <img src={chevronRight} />
                         </div>
-                        <div className='acesso-btn'>
+                        <div className='acesso-btn' onClick={irRede}>
                             <div className='acesso-btn-div'><img src={share2} /></div>
                             <div className='acesso-btn-text'>
                                 <h2>Rede</h2>
