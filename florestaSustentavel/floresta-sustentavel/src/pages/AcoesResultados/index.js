@@ -112,10 +112,10 @@ function AcoesResultados() {
                                     <h1>Ação e Resultado</h1>
                                     <hr />
                                     <div>
-                                        <div><h2>738.522<sup>3</sup></h2> <h3>Empregos formais gerados pelo setor florestal em 2021</h3></div>
+                                        <div><h2>738.522</h2> <h3>Empregos formais gerados pelo setor florestal em 2021</h3></div>
                                         <div><h2>São Paulo</h2> <h3>Principal unidade federativa empregadora em 2021</h3></div>
-                                        <div><h2>Mato Grosso do Sul<sup>3</sup> </h2> <h3>Principal unidade federativa empregadora em 2021</h3></div>
-                                        <div><h2>Fábrica de Móveis<sup>3</sup> </h2> <h3>Principal atividade empregadora em 2021</h3></div>
+                                        <div><h2>Mato Grosso do Sul </h2> <h3>Principal unidade federativa empregadora em 2021</h3></div>
+                                        <div><h2>Fábrica de Móveis </h2> <h3>Principal atividade empregadora em 2021</h3></div>
                                     </div>
 
                                 </section>
