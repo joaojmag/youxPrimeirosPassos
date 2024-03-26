@@ -65,7 +65,9 @@
 .div-pagina-intermediaria-pai {
     width: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 .div-pagina-intermediaria-pai span {
@@ -75,4 +77,23 @@
     padding: 24px 94px;
     border: 1px solid #FFFFFF;
     border-radius: 61px;
+}
+
+.div-pagina-linhaDoTempo {
+    height: 55em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    padding-bottom: 8em;
+    margin-top: -.25em;
+}
+
+.div-pagina-linhaDoTempo-bolinha {
+    width: 1em;
+    height: 1em;
+    background-color: #FFFFFF;
+    border-radius: 50%;
+    position: relative;
+    top: -.3em;
 }

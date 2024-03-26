@@ -28,14 +28,13 @@ function Rede() {
                 <div className='div-pagina-intermediaria-pai'>
                     <span><h1 style={{ color: '#ABBF3B' }}>Objetivos da Floresta + Sustentável</h1></span>
 
-                    <div className='div-pagina-intermediaria-esquerda'>
-                        <h1>esquerda</h1>
-                    </div>
+                    <div className='div-pagina-linhaDoTempo'>
+                        <div className='div-pagina-linhaDoTempo-bolinha'></div>
+                        <div className='div-pagina-linhaDoTempo-box1 div-pagina-linhaDoTempo-bolinha'>
+sasdsds
 
-                    <div className='div-pagina-intermediaria-direita'>
-                        <h1>direita</h1>
+                        </div>
                     </div>
-
 
                 </div>
                 <div className='div-pagina-final-pai'></div>
