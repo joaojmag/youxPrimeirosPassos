@@ -3,6 +3,8 @@ import Footer from '../../components/Footer'
 
 import homem from '../../assets/homem.png'
 import chevronRightBranco from '../../assets/chevron-right-branco.svg'
+import areasVegetacaoNativaDensa from '../../assets/areasVegetacaoNativaDensa.png'
+
 import './rede.css'
 
 function Rede() {
@@ -30,9 +32,16 @@ function Rede() {
 
                     <div className='div-pagina-linhaDoTempo'>
                         <div className='div-pagina-linhaDoTempo-bolinha'></div>
-                        <div className='div-pagina-linhaDoTempo-box1 div-pagina-linhaDoTempo-bolinha'>
-sasdsds
-
+                        <div className='div-pagina-linhaDoTempo-esquerda'>
+                            <div className='div-pagina-linhaDoTempo-bolinha'></div>
+                            <hr />
+                            <div className='div-pagina-linhaDoTempo-img-text'>
+                                <img src={areasVegetacaoNativaDensa} />
+                                <div>
+                                    <h2>Transparência e Planejamento</h2>
+                                    <h3>Monitoramento e visão geográfica de florestas plantadas subsidiadas por políticas públicas</h3>
+                                </div>
+                            </div>
                         </div>
                     </div>
 

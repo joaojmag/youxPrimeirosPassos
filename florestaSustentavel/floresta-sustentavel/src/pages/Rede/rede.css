@@ -81,12 +81,57 @@
 
 .div-pagina-linhaDoTempo {
     height: 55em;
+    width: 1px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    position: relative;
-    padding-bottom: 8em;
+    /*     position: relative;
+ */
+    /* padding-bottom: 8em; */
     margin-top: -.25em;
+    background: #FFFFFF;
+}
+
+.div-pagina-linhaDoTempo img {
+    width: 235px;
+    height: 183px;
+}
+
+
+.div-pagina-linhaDoTempo-esquerda {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    width: 60em;
+    position: relative;
+    right: 945px;
+}
+
+.div-pagina-linhaDoTempo-esquerda h2 {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 33px;
+    text-align: right;
+    color: #ABBF3B;
+}
+
+.div-pagina-linhaDoTempo-esquerda h3 {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 33px;
+    text-align: right;
+    color: #FFFFFF;
+}
+
+.div-pagina-linhaDoTempo-esquerda hr {
+    background: #FFFFFF;
+    height: 1px;
+    width: 5em;
+    margin: 0;
 }
 
 .div-pagina-linhaDoTempo-bolinha {
@@ -95,5 +140,13 @@
     background-color: #FFFFFF;
     border-radius: 50%;
     position: relative;
-    top: -.3em;
+    left: -0.4em;
+}
+
+.div-pagina-linhaDoTempo-img-text {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    column-gap: 5%;
+    width: 700px;
 }
