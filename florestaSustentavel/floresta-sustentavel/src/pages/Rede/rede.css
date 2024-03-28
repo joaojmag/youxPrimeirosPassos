@@ -85,9 +85,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    /*     position: relative;
- */
-    /* padding-bottom: 8em; */
     margin-top: -.25em;
     background: #FFFFFF;
 }
@@ -97,14 +94,13 @@
     height: 183px;
 }
 
-
 .div-pagina-linhaDoTempo-esquerda {
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
     width: 60em;
     position: relative;
-    right: 945px;
+    right: 951px;
 }
 
 .div-pagina-linhaDoTempo-esquerda h2 {
@@ -127,11 +123,52 @@
     color: #FFFFFF;
 }
 
-.div-pagina-linhaDoTempo-esquerda hr {
+.div-pagina-linhaDoTempo-direita {
+    display: flex;
+    align-items: center;
+    width: 60em;
+    position: relative;
+    right: 7px;
+}
+
+.div-pagina-linhaDoTempo-direita h2 {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 33px;
+    color: #ABBF3B;
+}
+
+.div-pagina-linhaDoTempo-direita h3 {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 33px;
+    color: #FFFFFF;
+}
+
+.div-pagina-linhaDoTempo hr {
     background: #FFFFFF;
     height: 1px;
     width: 5em;
     margin: 0;
+}
+
+.div-pagina-linhaDoTempo-img-text-esquerda {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    column-gap: 5%;
+    width: 700px;
+}
+
+.div-pagina-linhaDoTempo-img-text-direita {
+    display: flex;
+    align-items: center;
+    column-gap: 5%;
+    width: 700px;
 }
 
 .div-pagina-linhaDoTempo-bolinha {
@@ -139,14 +176,4 @@
     height: 1em;
     background-color: #FFFFFF;
     border-radius: 50%;
-    position: relative;
-    left: -0.4em;
-}
-
-.div-pagina-linhaDoTempo-img-text {
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
-    column-gap: 5%;
-    width: 700px;
 }
