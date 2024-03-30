@@ -80,7 +80,7 @@
 }
 
 .div-pagina-linhaDoTempo {
-    height: 55em;
+    height: 80em;
     width: 1px;
     display: flex;
     flex-direction: column;
@@ -92,6 +92,7 @@
 .div-pagina-linhaDoTempo img {
     width: 235px;
     height: 183px;
+    border-radius: 30px;
 }
 
 .div-pagina-linhaDoTempo-esquerda {
