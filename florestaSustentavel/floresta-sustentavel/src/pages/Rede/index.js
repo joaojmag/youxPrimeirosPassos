@@ -9,6 +9,8 @@ import areasVegetacaoNativaDensa2 from '../../assets/areasVegetacaoNativaDensa2.
 import areasVegetacaoNativaDensa3 from '../../assets/areasVegetacaoNativaDensa3.png'
 import areasVegetacaoNativaDensa4 from '../../assets/areasVegetacaoNativaDensa4.png'
 import areasVegetacaoNativaDensa5 from '../../assets/areasVegetacaoNativaDensa5.png'
+import figacima from '../../assets/figacima.png'
+import figabaixo from '../../assets/figabaixo.png'
 
 import './rede.css'
 
@@ -104,9 +106,30 @@ function Rede() {
                             </div>
                         </div>
                     </div>
-
                 </div>
-                <div className='div-pagina-final-pai'></div>
+                <div className='div-pagina-final-pai'>
+                    <div className='div-pagina-final-filho-acima'>
+                        <div className='imagem'>
+                            <span><h1>O que é a Rede Floresta +</h1></span>
+                            <img src={figacima} />
+                        </div>
+                        <div className='texto'>
+                            <h3>A Rede Floresta+ conecta instituições com projetos de reflorestamento a investidores interessados.</h3>
+                            <h4>O seu principal propósito é viabilizar o acesso a informações detalhadas sobre projetos de reflorestamento seja para fins comerciais, restauração ou conservação florestal, facilitando sua execução por parte dos investidores. O objetivo central da Rede é impulsionar iniciativas florestais sustentáveis, colaborando para o fortalecimento da economia florestal brasileira, a preservação dos ecossistemas e o estímulo ao desenvolvimento econômico e social sustentável.</h4>
+                            <span><h2>Quero ser um Investidor</h2> <img src={chevronRightBranco} /></span>
+                        </div>
+                    </div>
+                    <div className='div-pagina-final-filho-abaixo'>
+                        <div className='texto'>
+                            <h3>A Rede Floresta+ é uma valiosa plataforma que promove um networking entre investidores do setor florestal e entidades envolvidas em projetos de reflorestamento, com diversas finalidades, como comerciais, restauração ou conservação florestal. </h3>
+                            <h4>Por meio desta rede, investidores têm a oportunidade única de se conectar com projetos promissores, enquanto as entidades têm acesso a potenciais parceiros e financiadores para suas iniciativas. Essa interação fomenta o desenvolvimento de projetos florestais sustentáveis, impulsionando a economia do setor e fortalecendo a preservação dos ecossistemas.</h4>
+                            <span><h2>Quero conectar meu projeto</h2> <img src={chevronRightBranco} /></span>
+                        </div>
+                        <div className='imagem'>
+                            <span><h1>Porque fazer  parte da Rede?</h1></span>
+                            <img src={figabaixo} /></div>
+                    </div>
+                </div>
                 <Footer />
             </div>
         </div>
