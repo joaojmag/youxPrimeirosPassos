@@ -178,3 +178,47 @@
     background-color: #FFFFFF;
     border-radius: 50%;
 }
+
+.div-pagina-final-pai {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.div-pagina-final-filho-acima {
+    display: flex;
+    align-items: center;
+}
+
+.imagem {
+    width: 700px;
+}
+
+.imagem span {
+    width: 551px;
+    background: #85962B;
+    border-radius: 8px;
+}
+
+.imagem span h1 {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 42px;
+    color: #FFFFFF;
+}
+
+.texto {
+    width: 780px;
+}
+
+
+.div-pagina-final-filho-abaixo {
+    display: flex;
+    align-items: center;
+
+}

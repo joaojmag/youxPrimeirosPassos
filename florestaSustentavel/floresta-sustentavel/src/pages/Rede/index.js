@@ -137,3 +137,4 @@ function Rede() {
 }
 
 export default Rede;
+https://developer.mozilla.org/pt-BR/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance
