@@ -110,7 +110,7 @@ function Rede() {
                 <div className='div-pagina-final-pai'>
                     <div className='div-pagina-final-filho-acima'>
                         <div className='imagem'>
-                            <span><h1>O que é a Rede Floresta +</h1></span>
+                            <span ><h1>O que é a Rede Floresta +</h1></span>
                             <img src={figacima} />
                         </div>
                         <div className='texto'>
@@ -137,4 +137,4 @@ function Rede() {
 }
 
 export default Rede;
-https://developer.mozilla.org/pt-BR/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance
+// https://developer.mozilla.org/pt-BR/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance
