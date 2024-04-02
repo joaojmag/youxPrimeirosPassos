@@ -18,6 +18,7 @@ function Rede() {
     return (
         <div className='container-fluid row planode-fundo'>
             <div className='container-fluid row planode-fundo imgfundo'>
+                
                 <Header />
 
                 <div className='div-pagina-inicial-pai'>
