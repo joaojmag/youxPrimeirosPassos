@@ -1,3 +1,12 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Modal from 'react-modal';
+
+
+
+
+
+
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 
@@ -11,15 +20,114 @@ import areasVegetacaoNativaDensa4 from '../../assets/areasVegetacaoNativaDensa4.
 import areasVegetacaoNativaDensa5 from '../../assets/areasVegetacaoNativaDensa5.png'
 import figacima from '../../assets/figacima.png'
 import figabaixo from '../../assets/figabaixo.png'
+import fmaisBranco2 from '../../assets/fmaisBranco2.png'
+import x from '../../assets/x.svg'
+
 
 import './rede.css'
 
 function Rede() {
+    const [modalIsOpen, setIsOpen] = React.useState(false);
+    const [modalIsOpen1, setIsOpen1] = React.useState(false);
+
+
+    function openModal() {
+        setIsOpen(true);
+    }
+
+    function closeModal() {
+        setIsOpen(false);
+    }
+
+    function openModal1() {
+        setIsOpen1(true);
+    }
+
+    function closeModal1() {
+        setIsOpen1(false);
+    }
+
+
     return (
         <div className='container-fluid row planode-fundo'>
             <div className='container-fluid row planode-fundo imgfundo'>
-                
+
                 <Header />
+
+
+                <div className='modal-folha-fora'>
+                    <Modal
+                        isOpen={modalIsOpen}
+                        onRequestClose={closeModal}
+                        style={{
+                            content: {
+                                top: '50%',
+                                left: '50%',
+                                right: 'auto',
+                                bottom: 'auto',
+                                marginRight: '-50%',
+                                transform: 'translate(-50%, -50%)',
+                                padding: 0,
+                                border: 'none',
+                                borderRadius: '10px',
+                            },
+                        }}
+                    >
+                        <div className='modal-folha-dentro'>
+                            <img onClick={closeModal} id='posicao-x' src={x} />
+                            <h2>Ficaremos muito honrados e felizes em te ter como um parceiro investidor.</h2>
+
+                            <h3>
+                                <p>Aguardamos ansiosamente seu contato:</p> <br /><br />
+                                <p><strong>Departamento de Reflorestamento e Recuperação de Áreas Degradadas - DEFLO</strong></p>
+                                <p><strong>E-mail:</strong> deflo@agro.gov.br</p>
+                                <p><strong>Telefone:</strong> (61) 3276-4672</p>
+                            </h3>
+                            <img src={fmaisBranco2} />
+                        </div>
+                    </Modal>
+                </div>
+
+
+
+
+
+
+
+                <div className='modal-folha-fora'>
+                    <Modal
+                        isOpen={modalIsOpen1}
+                        onRequestClose={closeModal1}
+                        style={{
+                            content: {
+                                top: '50%',
+                                left: '50%',
+                                right: 'auto',
+                                bottom: 'auto',
+                                marginRight: '-50%',
+                                transform: 'translate(-50%, -50%)',
+                                padding: 0,
+                                border: 'none',
+                                borderRadius: '10px',
+                            },
+                        }}
+                    >
+                        <div className='modal-folha-dentro'>
+                            <img onClick={closeModal1} id='posicao-x' src={x} />
+                            <h2>Conecte seu projeto com a iniciativa.</h2>
+
+                            <h3>
+                                <p>Após a leitura do edital, envie sua proposta de projeto para a <strong>Coordenação-Geral de <br /> <br /> <br /> <br /> Desenvolvimento Florestal</strong></p> <br /><br /><br /><br />
+                                <p><strong>E-mail:</strong> coord-cgdf@agro.gov.br</p>
+                                <p><strong>Telefone:</strong> (61) 3276-4327</p>
+                            </h3>
+                            <img src={fmaisBranco2} />
+                        </div>
+                    </Modal>
+                </div>
+
+
+
 
                 <div className='div-pagina-inicial-pai'>
                     <div className='div-pagina-inicial'>
@@ -29,8 +137,8 @@ function Rede() {
                         </div>
 
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '37px' }}>
-                            <button><h2>Quero ser um Investidor</h2> <img src={chevronRightBranco} /></button>
-                            <button><h2>Quero conectar meu projeto</h2> <img src={chevronRightBranco} /></button>
+                            <button onClick={openModal}><h2>Quero ser um Investidor</h2> <img src={chevronRightBranco} /></button>
+                            <button onClick={openModal1}><h2>Quero conectar meu projeto</h2> <img src={chevronRightBranco} /></button>
                         </div>
                     </div>
                     <img src={homem} />
@@ -133,7 +241,7 @@ function Rede() {
                 </div>
                 <Footer />
             </div>
-        </div>
+        </div >
     );
 }
 

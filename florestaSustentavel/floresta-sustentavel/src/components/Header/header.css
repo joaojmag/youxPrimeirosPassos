@@ -9,8 +9,6 @@
     display: flex;
     width: 100%;
     font-size: 2rem;
-
-
 }
 
 .sidebar-bottom {
@@ -22,7 +20,7 @@
 }
 
 .sidebar-top-font-primario {
-    color: #ABBF3B;
+    color: #ABBF3B !important;
 }
 
 .sidebar-top-font-secundario {
@@ -39,10 +37,9 @@
     text-decoration: none;
     z-index: 1;
 
+    color: rgb(255, 255, 255);
 }
 
-/* hr {
-    border-color: #aaa;
-    box-sizing: border-box;
-    width: 100%;
+/* .sidebar-primaria .sidebar-top a:focus:target {
+    color: #ABBF3B;
 } */

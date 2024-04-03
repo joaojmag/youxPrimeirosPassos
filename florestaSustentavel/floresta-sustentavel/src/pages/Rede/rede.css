@@ -273,5 +273,49 @@
 .div-pagina-final-filho-abaixo {
     display: flex;
     align-items: center;
+}
 
+.modal-folha-dentro {
+    width: 784px;
+    background: linear-gradient(105.74deg, #192511 8.54%, #76833B 124.78%, #D1E756 124.78%);
+    border-radius: 10px;
+    padding-left: 2em;
+    padding-top: 4em;
+    padding-bottom: 1em;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2em;
+
+}
+
+.modal-folha-dentro h2 {
+    width: 700px;
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+    color: #FFFFFF;
+}
+
+.modal-folha-dentro h3 {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 5px;
+    color: #FFFFFF;
+}
+
+.modal-folha-dentro img {
+    width: 292px;
+}
+
+#posicao-x {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
 }
