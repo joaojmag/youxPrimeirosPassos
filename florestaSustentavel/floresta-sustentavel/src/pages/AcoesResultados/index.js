@@ -25,7 +25,6 @@ function AcoesResultados() {
     return (
         <div className='container-fluid row planode-fundo'>
             <div className='container-fluid row planode-fundo imgfundo'>
-                <Header />
                 <div className='acoes-resultados'>
                     <button className='btn-Painel-Florestal' onClick={voltarPaginaInicial}> <img src={voltar} />
                         <h1> Ações e Resultados</h1>

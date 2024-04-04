@@ -1,7 +1,16 @@
-.div-floresta-fundo {
+/* .div-floresta-fundo img{
     background-image: url('../../assets/imageFundoRede.png');
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
+    width: 100%;
+    position: fixed;
+    
+} */
+#imgfundo {
+    width: 100%;
+    position: absolute;
+    height: 113.5vh;
+    opacity: 0.5;
 }
 
 .div-pagina-inicial-pai {
@@ -14,6 +23,7 @@
 .div-pagina-inicial-pai img {
     position: relative;
     top: -130px;
+    z-index: 0;
 }
 
 .div-pagina-inicial {
@@ -21,6 +31,7 @@
     flex-direction: column;
     padding-left: 5%;
     row-gap: 86px;
+    z-index: 0;
 }
 
 .div-pagina-inicial h1 {

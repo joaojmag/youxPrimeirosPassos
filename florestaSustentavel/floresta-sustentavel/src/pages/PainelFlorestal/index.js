@@ -9,9 +9,14 @@ import Footer from '../../components/Footer/index';
 
 import mapBrasil from '../../assets/map_brazil_9copy21.png'
 import voltar from '../../assets/Voltar.svg'
-import VectorBR from '../../assets/VectorBR.svg'
-import containerBox from '../../assets/containerBox.svg'
 import slidershorizontal from '../../assets/sliders-horizontal.svg'
+
+import VectorBRTrue from '../../assets/VectorBRTrue.svg'
+import VectorBRFalse from '../../assets/VectorBRFalse.svg'
+
+
+import containerBoxTrue from '../../assets/containerBoxTrue.svg'
+import containerBoxFalse from '../../assets/containerBoxFalse.svg'
 
 import './painel-florestal.css'
 
@@ -38,7 +43,6 @@ function PainelFlorestal() {
     return (
         <div className='container-fluid row planode-fundo' >
             <div className='container-fluid row planode-fundo imgfundo'>
-                <Header />
                 <div className='div-mapa'>
                     <img src={mapBrasil} />
                 </div>
@@ -48,8 +52,9 @@ function PainelFlorestal() {
                     </button>
 
                     <div className='dvi-florestas-producao'>
-                        <button onClick={irFlorestasDoBrasil}><img src={VectorBR} /> Florestas do Brasil</button>
-                        <button onClick={irProducaoFlorestal}> <img src={containerBox} />Produção Florestal</button>
+                        <button className={isPage ? 'dvi-florestas-producao-true' : 'dvi-florestas-producao-false'} onClick={irFlorestasDoBrasil}><img src={isPage ? VectorBRTrue : VectorBRFalse} /> Florestas do Brasil</button>
+                        
+                        <button className={isPage ? 'dvi-florestas-producao-false' : 'dvi-florestas-producao-true'} onClick={irProducaoFlorestal}> <img src={isPage ? containerBoxFalse : containerBoxTrue} />Produção Florestal</button>
                     </div>
 
                     <button className='btn-Filtrar-Parametros'> <img src={slidershorizontal} />Filtrar Parâmetros</button>

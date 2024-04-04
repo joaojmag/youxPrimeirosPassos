@@ -1,7 +1,7 @@
 // import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import './header.css'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function Header() {
 
@@ -29,41 +29,27 @@ export default function Header() {
 
     ]
 
-    const [menuSelecionado, setMenuSelecionado] = useState('inicio')
+    const [menuSelecionado, setMenuSelecionado] = useState(0)
+
+    useEffect(() => {
+        console.log('menuSelecionado :>> ', menuSelecionado);
+    },[menuSelecionado])
 
     return (
         <div className='sidebar-primaria'>
             <div className='sidebar-top'>
 
-                {listaMenus.map((e) => {
+                {listaMenus.map((e, i) => {
                     return (
-                        <Link to={e.path} onClick={() => setMenuSelecionado('inicio')}
-                            style={menuSelecionado == 'inicio' ? { color: '#ABBF3B', fontWeight: 'bold' } : {}}>
+                        <Link to={e.path} onClick={() => setMenuSelecionado(i)} key={i}
+                            style={menuSelecionado == i ? 
+                                { color: '#ABBF3B', fontWeight: 'bold', borderBottom: 'solid 2px #ABBF3B', paddingBottom: '10px' }
+                                : {}}>
                             {e.label}
                         </Link>
                     )
                 })}
-
-                {/* <Link to='/' className='sidebar-top-font-secundario' onClick={() => setMenuSelecionado('inicio')}
-                    style={menuSelecionado == 'inicio' ? { color: '#ABBF3B', fontWeight: 'bold' } : {}}
-                >
-                    Início
-                </Link>
-                <Link to='/painel-florestal/florestas-brasil' className='sidebar-top-font-secundario'
-                    onClick={() => setMenuSelecionado('painelFlorestal')}>
-                    Painel Florestal
-                </Link>
-                <Link to='/acoes-resultados' className='sidebar-top-font-secundario' onClick={() => setMenuSelecionado('painelFlorestal')}>
-                    Ações e Resultados
-                </Link>
-                <Link to='/' className='sidebar-top-font-secundario' onClick={() => setMenuSelecionado('painelFlorestal')}>
-                    Painel Geo
-                </Link>
-                <Link to='/rede' className='sidebar-top-font-secundario' onClick={() => setMenuSelecionado('painelFlorestal')}>
-                    Rede
-                </Link> */}
-
-
+            
             </div>
             <div className='sidebar-bottom'></div>
         </div>

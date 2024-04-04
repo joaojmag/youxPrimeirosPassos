@@ -35,7 +35,6 @@ function Home() {
     return (
         <div className='container-fluid row planode-fundo'>
             <div className='container-fluid row planode-fundo imgfundo'>
-                <Header />
                 <div className='container-left'>
                     <img src={fmaisBranco2} className='logo' />
                     <div className='container-left-text'>

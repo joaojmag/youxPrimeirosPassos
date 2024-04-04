@@ -4,6 +4,7 @@ import PainelFlorestal from '../pages/PainelFlorestal'
 import ProducaoFlorestal from '../pages/ProducaoFlorestal'
 import AcoesResultados from '../pages/AcoesResultados'
 import Rede from '../pages/Rede';
+import Header from '../components/Header';
 
 
 function RoutesApp() {

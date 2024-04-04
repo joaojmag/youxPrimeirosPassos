@@ -100,7 +100,7 @@ article {
 
 }
 
-.dvi-florestas-producao button {
+.dvi-florestas-producao-true {
     padding-left: 0;
     display: flex;
     align-items: center;
@@ -111,6 +111,29 @@ article {
     border: none;
     outline: none;
     border: 1px solid #ABBF3B;
+    border-radius: 13px;
+    padding: 20px;
+
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 26px;
+
+    color: #FFFFFF;
+}
+
+.dvi-florestas-producao-false {
+    padding-left: 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: transparent;
+    /* background: #ABBF3B26; */
+
+    border: none;
+    outline: none;
+    /* border: 1px solid #ABBF3B; */
     border-radius: 13px;
     padding: 20px;
 
