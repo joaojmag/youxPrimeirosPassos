@@ -29,7 +29,7 @@ export default function Header() {
 
     ]
 
-    const [menuSelecionado, setMenuSelecionado] = useState('')
+    const [menuSelecionado, setMenuSelecionado] = useState('inicio')
 
     return (
         <div className='sidebar-primaria'>

@@ -19,13 +19,13 @@
     background-image: linear-gradient(to right, #ffffff7a, #ffffff11);
 }
 
-.sidebar-top-font-primario {
+/* .sidebar-top-font-primario {
     color: #ABBF3B !important;
 }
 
 .sidebar-top-font-secundario {
     color: #fff;
-}
+} */
 
 .sidebar-top a {
     margin-right: 27px;
@@ -36,10 +36,20 @@
     line-height: 26px;
     text-decoration: none;
     z-index: 1;
-
-    color: rgb(255, 255, 255);
+    color: #fff;
 }
 
-/* .sidebar-primaria .sidebar-top a:focus:target {
+/* .navButtonActive:before {
     color: #ABBF3B;
+    width: 100%
+} */
+/* 
+.navButtonActive:focus {
+        content: '';
+
+    color: #ABBF3B;
+    font-weight: 700;
+
+     width: calc(100% + 10px);
+    opacity: 1
 } */
