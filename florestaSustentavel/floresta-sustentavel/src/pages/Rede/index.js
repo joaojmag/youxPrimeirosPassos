@@ -22,6 +22,7 @@ import figabaixo from '../../assets/figabaixo.png'
 import fmaisBranco2 from '../../assets/fmaisBranco2.png'
 import x from '../../assets/x.svg'
 import imageFundoRede from '../../assets/imageFundoRede.png'
+import Lateral from '../../assets/Lateral.png'
 
 
 import './rede.css'
@@ -81,7 +82,7 @@ function Rede() {
                                 <p><strong>Telefone:</strong> (61) 3276-4672</p>
                             </h3>
                             <img src={fmaisBranco2} />
-                            <span id='logofundo' />
+                            <img id='logofundo' src={Lateral} />
                         </div>
                     </Modal>
                 </div>
@@ -114,11 +115,12 @@ function Rede() {
                                 <p><strong>Telefone:</strong> (61) 3276-4327</p>
                             </h3>
                             <img src={fmaisBranco2} />
+                            <img id='logofundo' src={Lateral} />
+
                         </div>
                     </Modal>
                 </div>
                 <div className='div-pagina-inicial-pai'>
-                    {/* <div className='div-floresta-fundo'> */}
                         <img id='imgfundo' src={imageFundoRede} />
 
                         <div className='div-pagina-inicial'>
@@ -134,7 +136,6 @@ function Rede() {
                         </div>
                         <img src={homem} />
 
-                    {/* </div> */}
                 </div>
                 <div className='div-pagina-intermediaria-pai'>
                     <span><h1 style={{ color: '#ABBF3B' }}>Objetivos da Floresta + Sustentável</h1></span>

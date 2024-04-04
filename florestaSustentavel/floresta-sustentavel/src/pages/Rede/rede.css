@@ -343,9 +343,8 @@
 }
 
 #logofundo {
-    background-image: url('../../assets/fmaisBranco2.png');
-    background-repeat: no-repeat;
-    background-size: contain;
     position: absolute;
-    left: 100px;
+    right: 0;
+    bottom: 0;
+    width: 45%;
 }
