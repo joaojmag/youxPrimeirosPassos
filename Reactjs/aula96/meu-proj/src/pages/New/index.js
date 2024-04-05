@@ -63,7 +63,7 @@ export default function New() {
       status: status,
       userId: user.uid
     }
-    sessionStorage.setItem(`@chamado${data.userId}`, JSON.stringify(data))
+    sessionStorage.setItem(`@chamado${data.created}`, JSON.stringify(data))
     toast.success("Chamado registrado!")
     setComplemento('')
     setCustomerSelected(0)

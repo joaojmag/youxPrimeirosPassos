@@ -25,6 +25,8 @@ export default function Dashboard() {
             const querySnapshot = convertStrEmObj();
 
             let selecionados = querySnapshot.filter(e => e.clienteId === user.uid && (e.status == 'Aberto' || e.status == 'Progresso' || e.status == 'Atendido'))
+
+            setChamados([]);
             updateState(selecionados)
         }
 
@@ -49,15 +51,13 @@ export default function Dashboard() {
                     cliente: doc.cliente,
                     clienteId: doc.clienteId,
                     created: doc.created,
+                    createdFormat: format(doc.created, 'dd/MM/yyyy'),
                     status: doc.status,
                     complemento: doc.complemento,
                 })
             })
-            console.log('chamados 1-> ', chamados);
 
             setChamados(chamados => [...chamados, ...lista])
-            console.log('chamados 2-> ', chamados);
-            console.log('lsita :>> ', lista);
 
         }
     }
@@ -105,11 +105,11 @@ export default function Dashboard() {
                                                 <td data-label="Cliente">{item.cliente}</td>
                                                 <td data-label="Assunto">{item.assunto}</td>
                                                 <td data-label="Status">
-                                                    <span className="badge" style={{ backgroundColor: '#999' }}>
+                                                    <span className="badge" style={item.status == 'Atendido' ? ({ backgroundColor: '#5fd204' }) : ({ backgroundColor: '#999' })}>
                                                         {item.status}
                                                     </span>
                                                 </td>
-                                                <td data-label="Cadastrado">12/05/2022</td>
+                                                <td data-label="Cadastrado">{item.createdFormat}</td>
                                                 <td data-label="#">
                                                     <button className="action" style={{ backgroundColor: '#3583f6' }}>
                                                         <FiSearch color='#FFF' size={17} />
