@@ -6,6 +6,7 @@ import Title from '../../components/Title'
 import { FiPlus, FiMessageSquare, FiSearch, FiEdit2 } from 'react-icons/fi'
 
 import { Link } from 'react-router-dom'
+import { format } from 'date-fns'
 
 import './dashboard.css'
 
@@ -53,7 +54,7 @@ export default function Dashboard() {
                 })
             })
             console.log('chamados 1-> ', chamados);
-            
+
             setChamados(chamados => [...chamados, ...lista])
             console.log('chamados 2-> ', chamados);
             console.log('lsita :>> ', lista);
