@@ -7,17 +7,26 @@ import { AuthContext } from '../../contexts/auth'
 
 import './new.css';
 import { toast } from 'react-toastify'
+import { useParams, useNavigate } from 'react-router-dom'
+
 
 export default function New() {
   const { user, convertStrEmObj } = useContext(AuthContext);
+  const { id } = useParams()
+  const [idCustomer, setIdCustomer] = useState(false)
+  const [passandoUserId, setpassandoUserId] = useState('')
+
 
   const [customers, setCustomers] = useState([])
-  const [loadCustomer, setLoadCustomer] = useState(false);
+  // const [loadCustomer, setLoadCustomer] = useState(false);
+  const loadCustomer = false
   const [customerSelected, setCustomerSelected] = useState(0)
 
   const [complemento, setComplemento] = useState('')
   const [assunto, setAssunto] = useState('Suporte')
   const [status, setStatus] = useState('Aberto')
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     function loadCustomers() {
@@ -34,10 +43,36 @@ export default function New() {
         }
       })
       setCustomers(lista);
+
+      if (id) {
+        loadId(vetObjGeral, lista);
+      }
+
+
     }
 
     loadCustomers();
-  }, [])
+  }, [id]);
+
+  function loadId(vetObjGeral, lista) {
+    vetObjGeral.forEach((value) => {
+      if (value.userId === id) {
+        setAssunto(value.assunto)
+        setComplemento(value.complemento)
+        setStatus(value.status)
+
+        let indexNomeFantasia = lista.findIndex(e => e.nomeFantasia === value.cliente)
+        setCustomerSelected(indexNomeFantasia);
+        setIdCustomer(true)
+        setpassandoUserId(value.userId)
+
+        console.log(value.userId);
+
+        console.log('useState :>> ', value.userId);
+      }
+    });
+
+  }
 
   function handleOptionChange(e) {
     setStatus(e.target.value);
@@ -54,6 +89,7 @@ export default function New() {
 
   function handleRegister(e) {
     e.preventDefault();
+
     let data = {
       created: new Date(),
       cliente: customers[customerSelected].nomeFantasia,
@@ -61,12 +97,15 @@ export default function New() {
       assunto: assunto,
       complemento: complemento,
       status: status,
-      userId: user.uid
+      userId: idCustomer ? `${passandoUserId}` : `@chamado${Math.random()}`
+
     }
-    sessionStorage.setItem(`@chamado${data.created}`, JSON.stringify(data))
+    sessionStorage.setItem(`${data.userId}`, JSON.stringify(data))
     toast.success("Chamado registrado!")
     setComplemento('')
     setCustomerSelected(0)
+
+    navigate('/dashboard')
   }
 
 
@@ -75,7 +114,7 @@ export default function New() {
       <Header />
 
       <div className="content">
-        <Title name="Novo chamado">
+        <Title name={id ? "Editar chamado" : "Novo chamado"}>
           <FiPlusCircle size={25} />
         </Title>
 

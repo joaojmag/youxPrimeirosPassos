@@ -21,6 +21,7 @@ function RoutesApp() {
             <Route path='/customers' element={<Customers />} />
             {/* <Route path='/new' element={<Private> <New /> </Private>} /> para deslogar da página */}
             <Route path='/new' element={<New />} />
+            <Route path='/new/:id' element={<New />} />
         </Routes>
     );
 }
