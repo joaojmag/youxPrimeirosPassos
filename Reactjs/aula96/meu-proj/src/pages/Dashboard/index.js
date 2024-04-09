@@ -1,17 +1,20 @@
 import { useContext, useState, useEffect } from 'react'
 import { AuthContext } from '../../contexts/auth'
+import { FiPlus, FiMessageSquare, FiSearch, FiEdit2 } from 'react-icons/fi'
+import { Link } from 'react-router-dom'
+import { format } from 'date-fns'
 
 import Header from '../../components/Header'
 import Title from '../../components/Title'
-import { FiPlus, FiMessageSquare, FiSearch, FiEdit2 } from 'react-icons/fi'
+import Modal from '../../components/Modal'
 
-import { Link } from 'react-router-dom'
-import { format } from 'date-fns'
 
 import './dashboard.css'
 
 export default function Dashboard() {
     const { logout, convertStrEmObj, user } = useContext(AuthContext);
+    const [showPostModal, setShowPostModal] = useState(false);
+    const [detail, setDetail] = useState()
 
     const [chamados, setChamados] = useState([])
 
@@ -36,7 +39,11 @@ export default function Dashboard() {
         return () => { }
     }, [])
 
-
+    function toggleModal(item) {
+        setShowPostModal(!showPostModal)
+        setDetail(item)
+        console.log(item);
+    }
 
     function updateState(querySnapshot) {
         const isCollectionEmpty = querySnapshot.length === 0;
@@ -111,10 +118,10 @@ export default function Dashboard() {
                                                 </td>
                                                 <td data-label="Cadastrado">{item.createdFormat}</td>
                                                 <td data-label="#">
-                                                    <button className="action" style={{ backgroundColor: '#3583f6' }}>
+                                                    <button className="action" style={{ backgroundColor: '#3583f6' }} onClick={() => toggleModal(item)}>
                                                         <FiSearch color='#FFF' size={17} />
                                                     </button>
-                                                    <Link to ={`/new/${item.id}`} className="action" style={{ backgroundColor: '#f6a935' }}>
+                                                    <Link to={`/new/${item.id}`} className="action" style={{ backgroundColor: '#f6a935' }}>
                                                         <FiEdit2 color='#FFF' size={17} />
                                                     </Link>
                                                 </td>
@@ -129,7 +136,11 @@ export default function Dashboard() {
                 </>
 
             </div>
-
+            {showPostModal &&
+                <Modal
+                    conteudo={detail}
+                    close={() => setShowPostModal(!showPostModal)}
+                />}
         </div>
     )
 }
