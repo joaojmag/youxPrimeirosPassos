@@ -2,6 +2,7 @@ import React from "react";
 import { FaGithub, FaPlus, FaSpinner, FaBars, FaTrash } from 'react-icons/fa'
 import { Container, Form, SubmitButton, List, DeletButton } from './styles.js'
 import { useState, useCallback, useEffect } from 'react';
+import { Link } from 'react-router-dom'
 
 import api from '../../services/api.js';
 
@@ -9,23 +10,31 @@ export default function Main() {
 
     const [newRepo, setNewRepo] = useState('')
     const [repositorios, setRepositorios] = useState([])
+    // const [initState, setInitState] = useState(true)
     const [loading, setLoading] = useState(false)
     const [alert, setAlert] = useState(null)
 
     // Buscar
     useEffect(() => {
         const repoStorage = sessionStorage.getItem('repos');
+        console.log('repoStorage :>> ', repoStorage);
 
         if (repoStorage) {
+            console.log('aqui');
+            console.log('JSON.parse(repoStorage) :>> ', JSON.parse(repoStorage));
             setRepositorios(JSON.parse(repoStorage))
         }
+        // setInitState(false)
 
     }, []);
 
     // Salvar alterações
     useEffect(() => {
+        // if(!initState) {
+        console.log('repositorios :>> ', repositorios);
         sessionStorage.setItem('repos', JSON.stringify(repositorios));
-
+        console.log('sessionStorage.getItem(repos) :>> ', sessionStorage.getItem('repos'));
+        // }
     }, [repositorios])
 
 
@@ -54,8 +63,6 @@ export default function Main() {
                 }
 
                 setRepositorios([...repositorios, data])
-                console.log(repositorios);
-
                 setNewRepo('')
             } catch (error) {
                 setAlert(true)
@@ -114,9 +121,9 @@ export default function Main() {
                             </DeletButton>
                             {repo.name}
                         </span>
-                        <a href="">
+                        <Link to={`/repositorio/${encodeURIComponent(repo.name)}`}>
                             <FaBars size={20} />
-                        </a>
+                        </Link>
                     </li>
                 ))}
             </List>

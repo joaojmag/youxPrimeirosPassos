@@ -1,7 +1,6 @@
 // import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import './header.css'
-import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom'
 
 export default function Header() {
@@ -30,18 +29,9 @@ export default function Header() {
 
     ]
 
-    // const [menuSelecionado, setMenuSelecionado] = useState(0)
     const rota = useLocation();
 
-    // useEffect(() => {
-    //     console.log('menuSelecionado :>> ', menuSelecionado);
-    //     console.log('rota :>> ', rota);
-    // },[menuSelecionado])
-
-    // useEffect(() => {
-    //     console.log('rota.pathname :>> ', rota.pathname);
-    // }, [rota.pathname])
-
+   
     return (
         <div className='sidebar-primaria'>
             <div className='sidebar-top'>
