@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { FaArrowLeft } from 'react-icons/fa'
 
-import { Container, Owner, Loading, BackButton, IssuesList } from './styles'
+import { Container, Owner, Loading, BackButton, IssuesList, PageActions } from './styles'
 import api from '../../services/api'
 
 export default function Repositorio() {
@@ -11,6 +11,8 @@ export default function Repositorio() {
     const [repositorios, setRepositorios] = useState({});
     const [issues, setIssues] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [page, setPage] = useState(1);
+    const [estado, setEstado] = useState('open')
 
     useEffect(() => {
         async function load() {
@@ -20,7 +22,7 @@ export default function Repositorio() {
                 api.get(`/repos/${repo}`),
                 api.get(`/repos/${repo}/issues`, {
                     params: {
-                        state: 'open',
+                        state: `${estado}`,
                         per_page: 5
                     }
                 })
@@ -32,7 +34,35 @@ export default function Repositorio() {
         }
 
         load();
-    }, [repositorio])
+    }, [repositorio, estado]);
+
+    useEffect(() => {
+        async function loadIssue() {
+            const repo = repositorio;
+
+            const response = await api.get(`/repos/${repo}/issues`, {
+                params: {
+                    state: `${estado}`,
+                    page,
+                    per_page: 5,
+                }
+            });
+
+            setIssues(response.data);
+
+        }
+
+        loadIssue()
+    }, [page, estado])
+
+    function handleEstado(action) {
+        setEstado(action)
+    }
+
+
+    function handlePage(action) {
+        setPage(action === 'back' ? page - 1 : page + 1)
+    }
 
     if (loading) {
         return (
@@ -52,7 +82,15 @@ export default function Repositorio() {
                     alt={repositorios.owner.login} />
                 <h1>{repositorios.name}</h1>
                 <p>{repositorios.description}</p>
+
+                <div>
+                    <button style={{ background: estado === 'open' ? '#0072cf' : '#222' }} onClick={() => handleEstado('open')}>Abertas</button>
+                    <button style={{ background: estado === 'all' ? '#0072cf' : '#222' }} onClick={() => handleEstado('all')}>Todas</button>
+                    <button style={{ background: estado === 'closed' ? '#0072cf' : '#222' }} onClick={() => handleEstado('closed')}>Fechadas</button>
+                </div>
             </Owner>
+
+
 
             <IssuesList>
                 {issues.map(issue => (
@@ -75,6 +113,17 @@ export default function Repositorio() {
                     </li>
                 ))}
             </IssuesList>
+
+            <PageActions>
+                <button
+                    type="button"
+                    onClick={() => handlePage('back')}
+                    disabled={page < 2}
+                >
+                    Voltar
+                </button>
+                <button type="button" onClick={() => handlePage('next')}>Próxima</button>
+            </PageActions>
 
         </Container>
     )

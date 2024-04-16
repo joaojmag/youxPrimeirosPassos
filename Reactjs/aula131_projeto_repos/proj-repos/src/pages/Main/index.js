@@ -10,7 +10,7 @@ export default function Main() {
 
     const [newRepo, setNewRepo] = useState('')
     const [repositorios, setRepositorios] = useState([])
-    // const [initState, setInitState] = useState(true)
+    const [initState, setInitState] = useState(true)
     const [loading, setLoading] = useState(false)
     const [alert, setAlert] = useState(null)
 
@@ -20,21 +20,17 @@ export default function Main() {
         console.log('repoStorage :>> ', repoStorage);
 
         if (repoStorage) {
-            console.log('aqui');
-            console.log('JSON.parse(repoStorage) :>> ', JSON.parse(repoStorage));
             setRepositorios(JSON.parse(repoStorage))
         }
-        // setInitState(false)
+        setInitState(false)
 
     }, []);
 
     // Salvar alterações
     useEffect(() => {
-        // if(!initState) {
-        console.log('repositorios :>> ', repositorios);
+        if(!initState) {
         sessionStorage.setItem('repos', JSON.stringify(repositorios));
-        console.log('sessionStorage.getItem(repos) :>> ', sessionStorage.getItem('repos'));
-        // }
+        }
     }, [repositorios])
 
 
