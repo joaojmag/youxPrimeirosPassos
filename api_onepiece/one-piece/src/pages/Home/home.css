@@ -1,0 +1,15 @@
+.classe-div-home {
+    display: flex;
+    flex-direction: column;
+}
+
+.classe-div-text{
+    display: flex;
+    justify-content: center;
+}
+
+.classe-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
