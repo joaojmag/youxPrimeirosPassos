@@ -1,43 +1,42 @@
 import { useState, useEffect } from 'react';
 
-import api from '../../services/api'
+// import api from '../../services/api'
 import './card.css'
 
-export default function Card({ nome, urlImage }) {
+export default function Card({ id, nome, urlImage, color}) {
     const [imagem, setImagem] = useState({})
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        async function testes() {
-            try {
-                const imagem = await api.get('1')
-                let data = {
-                    nome: `${imagem.data.name}`,
-                    imagem: `${imagem.data.imageUrl}`,
-                }
-                setImagem(data)
+    // async function testes(numId) {
+    //     try {
+    //         const imagem = await api.get(numId)
+    //         let data = {
+    //             nome: `${imagem.data.name}`,
+    //             imagem: `${imagem.data.imageUrl}`,
+    //         }
+    //         setImagem(data)
 
-            } catch (error) {
-                console.error(`Veja o erro -> `, error);
-            }
+    //     } catch (error) {
+    //         console.error(`Veja o erro -> `, error);
+    //     }
 
-        }
+    // }
 
-        testes();
-    }, [])
+    //     testes();
+    // }, [])
 
-
+    function clicando() {
+        alert(id)
+        // testes(id)
+    }
 
     return (
-        <div className='class-div-card'>
+        <div key={id} onClick={() => clicando()} className='class-div-card' style={{background: `${color}`}}>
             <img src={urlImage} />
             <span>
                 <h1>{nome}</h1>
             </span>
-            {/* <img src={imagem.imagem} />
-            <span>
-                <h1>{imagem.nome}</h1>
-            </span> */}
         </div>
     );
 }

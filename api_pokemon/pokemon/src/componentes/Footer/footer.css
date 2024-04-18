@@ -1,0 +1,18 @@
+.class-div-footer {
+    height: 55px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    border: 1px solid black;
+}
+
+.class-div-footer button {
+    height: 40px;
+    width: 40px;
+}
+
+.class-div-footer img {
+    display: flex;
+    width: 33px;
+}

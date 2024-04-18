@@ -1,31 +1,30 @@
 import { useEffect, useState } from 'react';
 
+import Paginacao from '../../componentes/Footer'
 import Card from '../../componentes/Card'
-import api from '../../services/api'
+import { buscarParametro } from '../../services/api'
 import './home.css'
 
 export default function Home() {
     const [arrPokmons, setArrPokmons] = useState([]);
-    const [idPokemon, setIdPokemon] = useState(1)
+    const [pagina, setPagina] = useState(1);
 
+    function quantidadeInicial() {
+        let res = (pagina - 1) * 9 + 1
+        return res
+    }
+
+    function changePage(nun) {
+        setPagina(nun)
+    }
 
     useEffect(() => {
+        let num = quantidadeInicial()
 
         async function loadingPokemon() {
             try {
-                const getPropPokemon = await api.get(`offset=150&limit=5`)
-                let data = {
-                    nome: `${getPropPokemon.data.name}`,
-                    imagem: `${getPropPokemon.data.imageUrl}`,
-                }
-
-
-                console.log('getPropPokemon.data :>> ', getPropPokemon.data);
-                console.log('antes arrPokmons :>> ', arrPokmons);
-                
-                setArrPokmons([...arrPokmons, data]);
-
-                console.log('depois arrPokmons :>> ', arrPokmons);
+                const getPropPokemon = await buscarParametro(num)
+                setArrPokmons(getPropPokemon.data)
 
             } catch (error) {
                 console.error(`Veja o erro -> `, error);
@@ -33,31 +32,35 @@ export default function Home() {
         }
 
         loadingPokemon();
-    }, []);
+    }, [pagina]);
 
     return (
-        <div className='class-div-home'>
+        <>
+            <div className='class-div-home' >
 
-            {arrPokmons.map((e, i) => {
-                return (
-                    <>
-                        <Card
-                            key={i}
-                            nome={e.nome}
-                            urlImage={e.imagem}
-                        />
-                        {console.log('arrPokmons dentro do map' ,e)}
-                    </>
-                );
-            })}
+                {arrPokmons.map((e) => {
+                    return (
+                        <>
+                            <Card
+                                id={e.id}
+                                nome={e.name}
+                                urlImage={e.imageUrl}
+                                color={e.color}
+                            />
+                        </>
+                    );
+                })}
 
-            {/* {Array(9).fill().map(() => (
-                <Card
+
+                {/* {Array(9).fill().map(() => (
+                    <Card
                     id="2"
                     nome=""
                     urlImage=""
-                />
-            ))} */}
-        </div>
+                    />
+                ))} */}
+            </div>
+            <Paginacao changePage={changePage} />
+        </>
     );
 }
