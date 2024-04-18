@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import api from '../../services/api'
 import './card.css'
 
-export default function Card() {
+export default function Card({ nome, urlImage }) {
     const [imagem, setImagem] = useState({})
 
     useEffect(() => {
@@ -30,10 +30,14 @@ export default function Card() {
 
     return (
         <div className='class-div-card'>
-            <img src={imagem.imagem} />
+            <img src={urlImage} />
+            <span>
+                <h1>{nome}</h1>
+            </span>
+            {/* <img src={imagem.imagem} />
             <span>
                 <h1>{imagem.nome}</h1>
-            </span>
+            </span> */}
         </div>
     );
 }
