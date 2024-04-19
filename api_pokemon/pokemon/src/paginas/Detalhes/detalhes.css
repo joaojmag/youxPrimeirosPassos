@@ -19,9 +19,13 @@
 
 }
 
-
 .class-div-detalhes-filho {
     width: 85%;
     height: 85%;
     border-radius: 10px;
+}
+
+.class-div-detalhes-filho img {
+    filter: drop-shadow(10px 5px 2px rgba(0, 0, 0, 0.7));
+
 }
