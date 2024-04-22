@@ -1,14 +1,19 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 
 import Paginacao from '../../componentes/Footer'
 import Card from '../../componentes/Card'
 import { buscarParametro } from '../../services/api'
+import { AuthContext } from '../../contexts';
 import './home.css'
 
 export default function Home() {
+    const { buscador } = useContext(AuthContext);
+
+
     const [arrPokmons, setArrPokmons] = useState([]);
     const [pagina, setPagina] = useState(1);
     const [arrFilter, setArrFilter] = useState([]);
+    // const [buscador, setBuscador] = useState('');
 
     function quantidadeInicial() {
         return (pagina - 1) * 9 + 1
@@ -18,13 +23,9 @@ export default function Home() {
         setPagina(nun)
     }
 
-
     function funcFind() {
-        /* const busca = arrPokmons.filter((e) => e.name.includes('sau'));
-        console.log('busca :>> ', busca); */
-        setArrFilter(arrPokmons.filter((e) => e.name.includes('sau')))
+        setArrFilter(arrPokmons.filter((e) => e.name.includes(`${buscador}`)))
     }
-
 
     useEffect(() => {
         let num = quantidadeInicial()
@@ -41,14 +42,13 @@ export default function Home() {
 
         funcFind()
         loadingPokemon();
-    }, [pagina]);
+    }, [pagina, buscador]);
 
     return (
         <>
             <div className='class-div-home' >
-                {/* tentar fazer um if */}
 
-                {(arrFilter ? arrFilter : arrPokmons).map((e) => {
+                {(arrFilter.length ? arrFilter : arrPokmons).map((e) => {
                     return (
                         <>
                             <Card
@@ -57,19 +57,9 @@ export default function Home() {
                                 urlImage={e.imageUrl}
                                 color={e.color}
                             />
-                            {console.log(arrFilter)}
                         </>
                     );
                 })}
-
-
-                {/* {Array(9).fill().map(() => (
-                    <Card
-                    id="2"
-                    nome=""
-                    urlImage=""
-                    />
-                ))} */}
             </div>
             <Paginacao changePage={changePage} />
         </>
