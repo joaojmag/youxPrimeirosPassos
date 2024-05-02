@@ -10,7 +10,7 @@ function AuthProvider({ children }) {
     }
 
     return (
-        <AuthContext.Provider value={{buscador, handleinputChange}}>
+        <AuthContext.Provider value={{ buscador, handleinputChange }}>
             {children}
         </AuthContext.Provider>
     );
