@@ -7,7 +7,7 @@ public class ExCasting {
         int b, c;
 
         a = 5.0;
-        b = (int) a;
+        b = (int) a; //casting para converter diretamente valores
         c = 2;
 
         System.out.printf("%d %n", b);
