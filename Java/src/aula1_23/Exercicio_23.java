@@ -25,6 +25,5 @@ public class Exercicio_23 {
         System.out.printf("Measus with eight decimal places: %.3f%n", measure);
         Locale.setDefault(Locale.US);
         System.out.printf("Measus with eight decimal places: %f%n", measure);
-        System.out.print("testes");
     }
 }
