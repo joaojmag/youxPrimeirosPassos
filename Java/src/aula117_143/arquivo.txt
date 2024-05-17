@@ -1,1 +1,1 @@
-vendas 5000
+vendas 6000
