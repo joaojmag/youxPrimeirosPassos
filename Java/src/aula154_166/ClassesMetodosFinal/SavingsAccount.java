@@ -1,5 +1,7 @@
 package aula154_166.ClassesMetodosFinal;
 
+// a palavra final não permite que a clase seja erdada!
+//public final class SavingsAccount extends Account {
 public class SavingsAccount extends Account {
     private Double interestRate;
 
@@ -25,6 +27,10 @@ public class SavingsAccount extends Account {
     }
 
     @Override
+//    A palavra final impede que o método seja sobreescrito em outras clases
+//    public final void withdraw(double amount) {
+//        balance -= amount;
+//    }
     public void withdraw(double amount) {
         balance -= amount;
     }
