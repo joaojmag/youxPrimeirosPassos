@@ -7,8 +7,7 @@ import java.io.IOException;
 public class Program {
     public static void main(String[] args) {
 
-        String path = """
-                /home/youx/Documentos/youxPrimeirosPassos/Java/src/aula213_222/lendoArquivoTexto/in.txt""";
+        String path = "/home/youx/Documentos/youxPrimeirosPassos/Java/src/aula213_222/lendoArquivoTexto/in.txt";
         FileReader fr = null;
         BufferedReader br = null;
 
@@ -34,7 +33,5 @@ public class Program {
                 e.printStackTrace();
             }
         }
-
-
     }
 }
