@@ -15,6 +15,7 @@ public class Program {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(path))) {
             for (String line : lines) {
                 bw.write(line);
+                System.out.println(line);
                 bw.newLine();
             }
 
