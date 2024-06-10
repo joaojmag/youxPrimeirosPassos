@@ -1,2 +1,8 @@
-package aula223_236_Interfaces.ExercicioFixacaoInterface.model.service;public interface OnlinePaymentService {
+package aula223_236_Interfaces.ExercicioFixacaoInterface.model.service;
+
+public interface OnlinePaymentService {
+
+    Double paymentFee(Double amount);
+
+    Double interest(Double amount, Integer months);
 }
