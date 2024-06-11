@@ -1,6 +1,7 @@
-package model.entities;
+package aula223_236_Interfaces.Herdar_vs_cumprir_contrato.model.entities;
 
-import model.enums.Color;
+
+import aula223_236_Interfaces.Herdar_vs_cumprir_contrato.model.enums.Color;
 
 public class Circle extends AbstractShape {
 
