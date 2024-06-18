@@ -1,4 +1,4 @@
-package aula251_263_ProgramacaoFuncionalExpressoesLambda.ComparatorFuncaoLambda.Function;
+package aula251_263_ProgramacaoFuncionalExpressoesLambda.Funcoes_que_recebem_funcoes_como_argumento;
 
 public class Product {
 
@@ -24,14 +24,6 @@ public class Product {
 
     public void setPrice(Double price) {
         this.price = price;
-    }
-
-    public static String staticUpperCaseName(Product product) {
-        return product.getName().toUpperCase();
-    }
-
-    public String nonStaticUpperCaseName() {
-        return this.name.toUpperCase();
     }
 
     @Override
