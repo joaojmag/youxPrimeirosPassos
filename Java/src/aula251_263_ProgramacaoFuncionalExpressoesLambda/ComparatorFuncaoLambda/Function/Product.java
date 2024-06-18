@@ -1,4 +1,4 @@
-package aula251_263_ProgramacaoFuncionalExpressoesLambda.ComparatorFuncaoLambda.Consumer;
+package aula251_263_ProgramacaoFuncionalExpressoesLambda.ComparatorFuncaoLambda.Function;
 
 public class Product {
 
@@ -26,13 +26,12 @@ public class Product {
         this.price = price;
     }
 
-    public static void staticPriceUpdate(Product p) {
-        p.setPrice(p.getPrice() * 1.1);
+    public static String staticUpperCaseName(Product product) {
+        return product.getName().toUpperCase();
     }
 
-    public void nonStaticPriceUpdate() {
-        this.price = price * 1.1;
-
+    public String nonStaticUpperCaseName() {
+        return this.name.toUpperCase();
     }
 
     @Override
