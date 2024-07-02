@@ -20,7 +20,6 @@ public class VendasApplication {
 //            clientes.save(cliente);
 //        };
 //    }
-
     public static void main(String[] args) {
         SpringApplication.run(VendasApplication.class, args);
     }
