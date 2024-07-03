@@ -1,6 +1,5 @@
 package org.example.rest.controller;
 
-import org.example.domain.entity.Cliente;
 import org.example.domain.entity.Produto;
 import org.example.domain.repository.Produtos;
 import org.springframework.data.domain.Example;
@@ -69,11 +68,9 @@ public class ProdutoController {
         produtos.findById(id)
                 .map(prduto -> {
                     produtos.delete(prduto);
-                    return prduto;
+    return prduto;
                 })
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
                         "Produto não encontrado"));
     }
-
-
 }
