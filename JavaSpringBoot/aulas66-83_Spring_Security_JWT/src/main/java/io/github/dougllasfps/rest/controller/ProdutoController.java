@@ -1,18 +1,18 @@
 package io.github.dougllasfps.rest.controller;
 
+import io.github.dougllasfps.domain.entity.Cliente;
 import io.github.dougllasfps.domain.entity.Produto;
 import io.github.dougllasfps.domain.repository.Produtos;
-import jakarta.validation.Valid;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.validation.Valid;
 import java.util.List;
 
-import static org.springframework.http.HttpStatus.CREATED;
-import static org.springframework.http.HttpStatus.NO_CONTENT;
+import static org.springframework.http.HttpStatus.*;
 
 @RestController
 @RequestMapping("/api/produtos")

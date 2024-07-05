@@ -34,7 +34,7 @@ public class PedidoServiceImpl implements PedidoService {
 
     @Override
     @Transactional
-    public Pedido salvar(PedidoDTO dto) {
+    public Pedido salvar( PedidoDTO dto ) {
         Integer idCliente = dto.getCliente();
         Cliente cliente = clientesRepository
                 .findById(idCliente)
@@ -60,29 +60,29 @@ public class PedidoServiceImpl implements PedidoService {
 
     @Override
     @Transactional
-    public void atualizaStatus(Integer id, StatusPedido statusPedido) {
+    public void atualizaStatus( Integer id, StatusPedido statusPedido ) {
         repository
                 .findById(id)
-                .map(pedido -> {
+                .map( pedido -> {
                     pedido.setStatus(statusPedido);
                     return repository.save(pedido);
-                }).orElseThrow(() -> new PedidoNaoEncontradoException());
+                }).orElseThrow(() -> new PedidoNaoEncontradoException() );
     }
 
-    private List<ItemPedido> converterItems(Pedido pedido, List<ItemPedidoDTO> items) {
-        if (items.isEmpty()) {
+    private List<ItemPedido> converterItems(Pedido pedido, List<ItemPedidoDTO> items){
+        if(items.isEmpty()){
             throw new RegraNegocioException("Não é possível realizar um pedido sem items.");
         }
 
         return items
                 .stream()
-                .map(dto -> {
+                .map( dto -> {
                     Integer idProduto = dto.getProduto();
                     Produto produto = produtosRepository
                             .findById(idProduto)
                             .orElseThrow(
                                     () -> new RegraNegocioException(
-                                            "Código de produto inválido: " + idProduto
+                                            "Código de produto inválido: "+ idProduto
                                     ));
 
                     ItemPedido itemPedido = new ItemPedido();

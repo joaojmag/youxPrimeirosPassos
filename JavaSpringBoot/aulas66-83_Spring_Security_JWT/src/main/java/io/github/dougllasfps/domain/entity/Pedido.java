@@ -1,13 +1,14 @@
 package io.github.dougllasfps.domain.entity;
 
 import io.github.dougllasfps.domain.enums.StatusPedido;
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data

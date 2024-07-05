@@ -1,5 +1,6 @@
 package io.github.dougllasfps.rest;
 
+import lombok.Data;
 import lombok.Getter;
 
 import java.util.Arrays;
