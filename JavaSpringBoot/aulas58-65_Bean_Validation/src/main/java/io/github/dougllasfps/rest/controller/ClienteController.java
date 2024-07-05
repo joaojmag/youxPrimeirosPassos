@@ -4,18 +4,12 @@ import io.github.dougllasfps.domain.entity.Cliente;
 import io.github.dougllasfps.domain.repository.Clientes;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Supplier;
 
 @RestController
 @RequestMapping("/api/clientes")
