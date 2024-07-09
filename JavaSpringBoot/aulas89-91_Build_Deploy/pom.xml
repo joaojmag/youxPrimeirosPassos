@@ -89,3 +89,5 @@
 
 
 </project>
+
+<!--para o deploi  mvn clean package -->
