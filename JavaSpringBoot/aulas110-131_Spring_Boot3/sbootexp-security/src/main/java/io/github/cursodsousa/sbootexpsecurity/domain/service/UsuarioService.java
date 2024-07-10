@@ -7,6 +7,7 @@ import io.github.cursodsousa.sbootexpsecurity.domain.repository.GrupoRepository;
 import io.github.cursodsousa.sbootexpsecurity.domain.repository.UsuarioGrupoRepository;
 import io.github.cursodsousa.sbootexpsecurity.domain.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,8 +20,11 @@ public class UsuarioService {
     private final UsuarioRepository repository;
     private final GrupoRepository grupoRepository;
     private final UsuarioGrupoRepository usuarioGrupoRepository;
+    private final PasswordEncoder passwordEncoder;
 
     public Usuario salvar(Usuario usuario, List<String> grupos) {
+        String senhaCriptografada = passwordEncoder.encode(usuario.getNome());
+        usuario.setSenha(senhaCriptografada);
         repository.save(usuario);
 
         List<UsuarioGrupo> listaUsuarioGrupo = grupos.stream().map(nomeGrupo -> {
