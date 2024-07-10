@@ -28,7 +28,7 @@ public class CustomFilter extends OncePerRequestFilter {
                 Authentication authentication = new UsernamePasswordAuthenticationToken
                         ("Muito Secreto",
                                 null,
-                                List.of(new SimpleGrantedAuthority("ADMIN")));
+                                List.of(new SimpleGrantedAuthority("USER")));
 
                 SecurityContext securityContext = SecurityContextHolder.getContext();
                 securityContext.setAuthentication(authentication);
