@@ -1,19 +1,24 @@
 package io.github.cursodsousa.sbootexpsecurity.domain.security;
 
+import io.github.cursodsousa.sbootexpsecurity.domain.service.UsuarioService;
+
+
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
+
 import java.util.Collection;
-import java.util.List;
 import java.util.stream.Collectors;
+
 
 public class CustomAuthentication implements Authentication {
 
-   private final IdentificacaoUsuario identificacaoUsuario;
+
+    private final IdentificacaoUsuario identificacaoUsuario;
 
     public CustomAuthentication(IdentificacaoUsuario identificacaoUsuario) {
-        if (identificacaoUsuario == null){
+        if (identificacaoUsuario == null) {
             throw new ExceptionInInitializerError("Não é possível criar um customAuthentication sem a identificação do usuario");
         }
         this.identificacaoUsuario = identificacaoUsuario;
