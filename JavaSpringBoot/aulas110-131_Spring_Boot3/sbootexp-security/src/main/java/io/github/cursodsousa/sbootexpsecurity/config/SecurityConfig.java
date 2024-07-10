@@ -12,6 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -19,12 +20,19 @@ public class SecurityConfig {
 
     // Para dizer quais rotas são permitidas navegar sem altenticação
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http,
+                                                   SenhaMasterAuthenticationProvider senhaMasterAuthenticationProvider,
+                                                   CustomFilter customFilter) throws Exception {
         return http
                 .authorizeHttpRequests(customizer -> {
                     customizer.requestMatchers("/public").permitAll();
                     customizer.anyRequest().authenticated();
-                }).httpBasic(Customizer.withDefaults())
+                })
+                .httpBasic(Customizer.withDefaults())
+                .formLogin(Customizer.withDefaults())
+                // o metodo abaixo sobreescreve o UserDetailsService
+                .authenticationProvider(senhaMasterAuthenticationProvider)
+                .addFilterBefore(customFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
 
