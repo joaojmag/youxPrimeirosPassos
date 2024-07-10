@@ -26,6 +26,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http,
                                                    SenhaMasterAuthenticationProvider senhaMasterAuthenticationProvider,
+                                                   CustomAuthenticationProvider customAuthenticationProvider,
                                                    CustomFilter customFilter) throws Exception {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
@@ -40,6 +41,7 @@ public class SecurityConfig {
                 .formLogin(Customizer.withDefaults())
                 // o metodo abaixo sobreescreve o UserDetailsService
                 .authenticationProvider(senhaMasterAuthenticationProvider)
+                .authenticationProvider(customAuthenticationProvider)
                 .addFilterBefore(customFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }

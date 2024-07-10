@@ -1,5 +1,7 @@
 package io.github.cursodsousa.sbootexpsecurity.config;
 
+import io.github.cursodsousa.sbootexpsecurity.domain.security.CustomAuthentication;
+import io.github.cursodsousa.sbootexpsecurity.domain.security.IdentificacaoUsuario;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -25,10 +27,18 @@ public class CustomFilter extends OncePerRequestFilter {
         String secretHeader = request.getHeader("x-secret");
         if (secretHeader != null) {
             if (secretHeader.equals("secr3t")) {
-                Authentication authentication = new UsernamePasswordAuthenticationToken
-                        ("Muito Secreto",
-                                null,
-                                List.of(new SimpleGrantedAuthority("USER")));
+                var identificacaoUsuario = new IdentificacaoUsuario(
+                        "id_secreto",
+                        "Muito secreto",
+                        "x-secret",
+                        List.of("USER"));
+
+                // O de cima susbstitui o de baixo
+//                Authentication authentication = new UsernamePasswordAuthenticationToken
+//                        ("Muito Secreto",
+//                                null,
+//                                List.of(new SimpleGrantedAuthority("USER")));
+                Authentication authentication = new CustomAuthentication(identificacaoUsuario);
 
                 SecurityContext securityContext = SecurityContextHolder.getContext();
                 securityContext.setAuthentication(authentication);
