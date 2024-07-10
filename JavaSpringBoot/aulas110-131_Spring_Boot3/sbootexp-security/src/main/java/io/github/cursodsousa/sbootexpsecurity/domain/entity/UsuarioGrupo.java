@@ -1,4 +1,4 @@
-package io.github.cursodsousa.sbootexpsecurity.domain;
+package io.github.cursodsousa.sbootexpsecurity.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
