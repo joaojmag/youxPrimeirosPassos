@@ -1,7 +1,5 @@
 package io.github.cursodsousa.sbootexpsecurity.domain.security;
 
-import io.github.cursodsousa.sbootexpsecurity.domain.service.UsuarioService;
-
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
