@@ -45,4 +45,16 @@ public class UsuarioResource {
                 .orElseThrow(() ->
                         new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
+
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void update(@PathVariable Integer id, @RequestBody Usuario usuario) {
+        usuarioRepository.findById(id).map(e -> {
+            usuario.setId(e.getId());
+            usuarioRepository.save(usuario);
+            return e;
+        }).orElseThrow(() ->
+                new ResponseStatusException(HttpStatus.NOT_FOUND));
+    }
+
 }
