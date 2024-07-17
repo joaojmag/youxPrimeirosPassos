@@ -1,9 +1,13 @@
 package com.jmag.casa_de_apostas.services;
 
+import com.jmag.casa_de_apostas.config.SecurityConfig;
 import com.jmag.casa_de_apostas.entities.Usuario;
 import com.jmag.casa_de_apostas.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -18,6 +22,9 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository repository;
 
+    @Autowired
+    private SecurityConfig securityConfig;
+
     public Optional<Usuario> findById(Integer id) {
         return repository.findById(id);
     }
@@ -29,6 +36,9 @@ public class UsuarioService {
     public Usuario save(Usuario usuario) {
 
         if (verificarSenha(usuario)) {
+            // Para criptografar a senha
+            String senhaCriptografada = securityConfig.passwordEncoder().encode(usuario.getSenha());
+            usuario.setSenha(senhaCriptografada);
             return repository.save(usuario);
         } else
             throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE);
@@ -63,6 +73,37 @@ public class UsuarioService {
         Matcher matcher = pattern.matcher(senha);
 
         return matcher.matches();
+    }
+
+    public UserDetails autenticar(Usuario usuario) {
+        UserDetails user = loadUserByEmail(usuario.getEmail());
+
+
+//        UserDetails user = loadUserByUsername(usuario.getLogin());
+//        boolean senhasBatem = encoder.matches( usuario.getSenha(), user.getPassword() );
+//
+//        if(senhasBatem){
+//            return user;
+//        }
+//
+//        throw new SenhaInvalidaException();
+
+    }
+
+
+    public UserDetails loadUserByEmail(String email) throws UsernameNotFoundException {
+        Usuario usuario = repository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado na base de dados."));
+
+        String[] roles = usuario.isAdmin() ?
+                new String[]{"ADMIN", "USER"} : new String[]{"USER"};
+
+        return User
+                .builder()
+                .username(usuario.getEmail())
+                .password(usuario.getSenha())
+                .roles(roles)
+                .build();
     }
 
 }
