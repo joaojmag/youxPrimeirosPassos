@@ -1,10 +1,10 @@
 package com.jmag.casa_de_apostas.resources;
 
 import com.jmag.casa_de_apostas.entities.Usuario;
-import com.jmag.casa_de_apostas.repositories.UsuarioRepository;
 import com.jmag.casa_de_apostas.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -13,9 +13,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/usuarios")
 public class UsuarioResource {
-
-    @Autowired
-    private UsuarioRepository usuarioRepository;
 
     @Autowired
     private UsuarioService service;

@@ -47,7 +47,7 @@ public class UsuarioService {
                 .findById(id)
                 .map(e -> {
                     usuario.setId(e.getId());
-                    repository.save(usuario);
+                    save(usuario);
                     return e;
                 }).orElseThrow(() ->
                         new ResponseStatusException(HttpStatus.NOT_FOUND));
@@ -55,17 +55,14 @@ public class UsuarioService {
 
     private boolean verificarSenha(Usuario usuario) {
 
-        if (usuario.getSenha().length() >= 8) {
-            // Expressão regular para verificar se contém pelo menos uma letra maiúscula, um número e um caractere especial
-            String chaveParaVerificacao = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?]).{8,}$";
-            String senha = usuario.getSenha();
+        // Expressão regular para verificar se contém pelo menos uma letra maiúscula, um número e um caractere especial
+        String chaveParaVerificacao = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?]).{8,}$";
+        String senha = usuario.getSenha();
 
-            Pattern pattern = Pattern.compile(chaveParaVerificacao);
-            Matcher matcher = pattern.matcher(senha);
+        Pattern pattern = Pattern.compile(chaveParaVerificacao);
+        Matcher matcher = pattern.matcher(senha);
 
-            return matcher.matches();
-        } else
-            return false;
+        return matcher.matches();
     }
 
 }
