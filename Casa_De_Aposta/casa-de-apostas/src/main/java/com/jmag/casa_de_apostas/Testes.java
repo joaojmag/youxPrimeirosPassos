@@ -15,7 +15,7 @@ public class Testes implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Usuario u1 = new Usuario(null, "Joao", "joao@gmail.com", "12/02/2036", "147852");
+        Usuario u1 = new Usuario(null, "Joao", "joao@gmail.com", "12/02/2036", "147852", true);
 
         usuarioResource.save(u1);
     }

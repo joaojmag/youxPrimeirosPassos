@@ -13,16 +13,18 @@ public class Usuario {
     private String email;
     private String dataNascimento;
     private String senha;
+    private boolean admin;
 
     public Usuario() {
     }
 
-    public Usuario(Integer id, String nome, String email, String dataNascimento, String senha) {
+    public Usuario(Integer id, String nome, String email, String dataNascimento, String senha, boolean admin) {
         this.id = id;
         this.nome = nome;
         this.email = email;
         this.dataNascimento = dataNascimento;
         this.senha = senha;
+        this.admin = admin;
     }
 
     public Integer getId() {
@@ -63,5 +65,13 @@ public class Usuario {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
     }
 }
