@@ -1,12 +1,14 @@
 package com.jmag.casa_de_apostas.entities;
 
-import jakarta.persistence.Entity;
+import org.springframework.stereotype.Component;
 
-@Entity
+@Component
 public class Logando {
 
     private String email;
     private String senha;
+
+    public Logando(){}
 
     public Logando(String email, String senha) {
         this.email = email;

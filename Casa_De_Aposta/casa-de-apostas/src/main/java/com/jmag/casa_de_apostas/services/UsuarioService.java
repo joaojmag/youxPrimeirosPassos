@@ -1,6 +1,7 @@
 package com.jmag.casa_de_apostas.services;
 
 import com.jmag.casa_de_apostas.config.SecurityConfig;
+import com.jmag.casa_de_apostas.entities.Logando;
 import com.jmag.casa_de_apostas.entities.Usuario;
 import com.jmag.casa_de_apostas.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -24,6 +26,9 @@ public class UsuarioService {
 
     @Autowired
     private SecurityConfig securityConfig;
+
+    @Autowired
+    private PasswordEncoder encoder;
 
     public Optional<Usuario> findById(Integer id) {
         return repository.findById(id);
@@ -75,19 +80,15 @@ public class UsuarioService {
         return matcher.matches();
     }
 
-    public UserDetails autenticar(Usuario usuario) {
-        UserDetails user = loadUserByEmail(usuario.getEmail());
+    public UserDetails autenticar(Logando logando) {
+        UserDetails user = loadUserByEmail(logando.getEmail());
+        boolean senhasBatem = encoder.matches(logando.getSenha(), user.getPassword());
 
+        if (senhasBatem) {
+            return user;
+        }
 
-//        UserDetails user = loadUserByUsername(usuario.getLogin());
-//        boolean senhasBatem = encoder.matches( usuario.getSenha(), user.getPassword() );
-//
-//        if(senhasBatem){
-//            return user;
-//        }
-//
-//        throw new SenhaInvalidaException();
-
+        throw new RuntimeException("Erro ao tentar autenticar");
     }
 
 
