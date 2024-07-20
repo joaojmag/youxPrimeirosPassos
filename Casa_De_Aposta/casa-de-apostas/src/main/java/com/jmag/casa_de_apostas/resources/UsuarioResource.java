@@ -4,7 +4,6 @@ import com.jmag.casa_de_apostas.entities.Usuario;
 import com.jmag.casa_de_apostas.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 

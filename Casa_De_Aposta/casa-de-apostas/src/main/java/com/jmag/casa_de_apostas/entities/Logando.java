@@ -1,8 +1,5 @@
 package com.jmag.casa_de_apostas.entities;
 
-import org.springframework.stereotype.Component;
-
-@Component
 public class Logando {
 
     private String email;
