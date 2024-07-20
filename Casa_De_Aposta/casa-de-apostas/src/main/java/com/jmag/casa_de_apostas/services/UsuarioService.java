@@ -4,6 +4,8 @@ import com.jmag.casa_de_apostas.entities.Usuario;
 import com.jmag.casa_de_apostas.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -29,6 +31,8 @@ public class UsuarioService {
     public Usuario save(Usuario usuario) {
 
         if (verificarSenha(usuario)) {
+            String encryptedPassword = new BCryptPasswordEncoder().encode(usuario.getSenha());
+            usuario.setSenha(encryptedPassword);
             return repository.save(usuario);
         } else
             throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE);
@@ -51,6 +55,10 @@ public class UsuarioService {
                     return e;
                 }).orElseThrow(() ->
                         new ResponseStatusException(HttpStatus.NOT_FOUND));
+    }
+
+    public UserDetails findByEmail(String email) {
+        return repository.findByEmail(email);
     }
 
     private boolean verificarSenha(Usuario usuario) {
