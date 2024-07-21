@@ -1,8 +1,10 @@
 package com.jmag.casa_de_apostas.resources;
 
 import com.jmag.casa_de_apostas.entities.LogandoDTO;
+import com.jmag.casa_de_apostas.entities.LoginResponseDTO;
 import com.jmag.casa_de_apostas.entities.RegisterDTO;
 import com.jmag.casa_de_apostas.entities.Usuario;
+import com.jmag.casa_de_apostas.security.TokenService;
 import com.jmag.casa_de_apostas.services.UsuarioService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,19 +26,24 @@ public class AuthenticationController {
     @Autowired
     private UsuarioService service;
 
+    @Autowired
+    TokenService tokenService;
+
     @PostMapping("/login")
     public ResponseEntity login(@RequestBody @Valid LogandoDTO data) {
         var usernamePassword = new UsernamePasswordAuthenticationToken(data.login(), data.password());
         var auth = this.authenticationManager.authenticate(usernamePassword);
 
-        return ResponseEntity.ok().build();
+        var token = tokenService.generateToken((Usuario) auth.getPrincipal());
+
+        return ResponseEntity.ok(new LoginResponseDTO(token));
     }
 
     @PostMapping("/register")
     public ResponseEntity register(@RequestBody @Valid RegisterDTO data) {
         if (this.service.findByEmail(data.email()) != null) return ResponseEntity.badRequest().build();
 
-        Usuario newUser= new Usuario(data.nome(), data.email(), data.dataNascimento(), data.senha(), data.role());
+        Usuario newUser = new Usuario(data.nome(), data.email(), data.dataNascimento(), data.senha(), data.role());
         this.service.save(newUser);
 
         return ResponseEntity.ok().build();
