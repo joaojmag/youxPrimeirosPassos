@@ -1,8 +1,8 @@
 package com.jmag.casa_de_apostas.resources;
 
-import com.jmag.casa_de_apostas.entities.LogandoDTO;
-import com.jmag.casa_de_apostas.entities.LoginResponseDTO;
-import com.jmag.casa_de_apostas.entities.RegisterDTO;
+import com.jmag.casa_de_apostas.entities.dto.LogandoDTO;
+import com.jmag.casa_de_apostas.entities.dto.LoginResponseDTO;
+import com.jmag.casa_de_apostas.entities.dto.RegisterDTO;
 import com.jmag.casa_de_apostas.entities.Usuario;
 import com.jmag.casa_de_apostas.security.TokenService;
 import com.jmag.casa_de_apostas.services.UsuarioService;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api/auth")
 public class AuthenticationController {
 
     @Autowired
@@ -49,5 +49,3 @@ public class AuthenticationController {
         return ResponseEntity.ok().build();
     }
 }
-
-
