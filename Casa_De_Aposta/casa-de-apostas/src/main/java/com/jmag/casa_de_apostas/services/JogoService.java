@@ -27,32 +27,36 @@ public class JogoService {
 
     Random random = new Random();
 
-    public List<Integer> gerarListaAleatorio() {
-        listaAleatoria.clear();
-        for (int i = 0; i < 25; i++) {
-            listaAleatoria.add(random.nextInt(2));
+    public Integer iniciarPartida(IniciarPartidaDTO iniciar) {
+
+        if (iniciar.iniciar()) {
+            String vetorComJogo = gerarListaAleatorio().toString();
+            Double valorDaAposta = iniciar.valorDaAposta();
+            Integer idDoUsuario = iniciar.idDoUsuario();
+            var jogo = repository.save(new Jogo(vetorComJogo, valorDaAposta, idDoUsuario));
+
+            return jogo.getId();
         }
-        return listaAleatoria;
+        return null;
     }
 
     public Double jogando(JogandoDTO dadosJogo) {
 
         int posicaoNumClicado = dadosJogo.posicaoNumClicado();
-        Optional<Jogo> dadosDoJogo = repository.findById(102);
+        Optional<Jogo> dadosDoJogo = repository.findById(dadosJogo.idDoJogo());
         Integer[] vet = vetorComAsPosicoesDoJogo(dadosDoJogo);
 
-        return 0.0;
+        if (vet[posicaoNumClicado] == 1) {
+            setQuantidade_de_diamantes(getQuantidade_de_diamantes() + 1);
+            if (dadosJogo.encerrar()) {
+                return calculoDeGanhos(dadosJogo.idDoJogo(), getQuantidade_de_diamantes());
+            }
+            return (double) getQuantidade_de_diamantes();
 
-//        if (dadosJogo.posicaoNumClicado() == 1) {
-//            setQuantidade_de_diamantes(getQuantidade_de_diamantes() + 1);
-//            if (dadosJogo.encerrar() != null) {
-//                return calculoDeGanhos(dadosJogo.valor_apostado(), getQuantidade_de_diamantes());
-//            }
-//            return (double) getQuantidade_de_diamantes();
-//        } else {
-//            setQuantidade_de_diamantes(0);
-//            return 0.0;
-//        }
+        } else {
+            setQuantidade_de_diamantes(0);
+            return 0.0;
+        }
     }
 
     private Integer[] vetorComAsPosicoesDoJogo(Optional<Jogo> dadosDoJogo) {
@@ -65,24 +69,20 @@ public class JogoService {
         for (int i = 0; i < novoVet.length; i++) {
             vetor[i] = Integer.parseInt(novoVet[i].trim());
         }
-
         return vetor;
     }
 
-    public Double calculoDeGanhos(Double valor_apostado, Integer quantidade_de_diamantes_encontrados) {
+    private Double calculoDeGanhos(Integer idJogo, Integer quantidade_de_diamantes_encontrados) {
+        Jogo jogo = repository.findById(idJogo).get();
+        Double valor_apostado = jogo.getValorDaAposta();
         return (valor_apostado) * (1 + (quantidade_de_diamantes_encontrados * 0.33));
     }
 
-    public Integer iniciarPartida(IniciarPartidaDTO iniciar) {
-
-        if (iniciar.iniciar()) {
-            String vetorComJogo = gerarListaAleatorio().toString();
-            Double valorDaAposta = iniciar.valorDaAposta();
-            Integer idDoUsuario = iniciar.idDoUsuario();
-            var jogo = repository.save(new Jogo(vetorComJogo, valorDaAposta, idDoUsuario));
-
-            return jogo.getId();
+    private List<Integer> gerarListaAleatorio() {
+        listaAleatoria.clear();
+        for (int i = 0; i < 25; i++) {
+            listaAleatoria.add(random.nextInt(2));
         }
-        return null;
+        return listaAleatoria;
     }
 }

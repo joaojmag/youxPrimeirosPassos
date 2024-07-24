@@ -16,11 +16,6 @@ public class JogoController {
     @Autowired
     private JogoService jogoService;
 
-    @GetMapping
-    public List<Integer> getNumerosAleatorios() {
-        return jogoService.gerarListaAleatorio();
-    }
-
     @PostMapping("/comecar/jogando")
     public Double mandarNumero(@RequestBody JogandoDTO dadosJogo) {
         return jogoService.jogando(dadosJogo);
