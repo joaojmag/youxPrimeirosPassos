@@ -1,6 +1,7 @@
 package com.jmag.casa_de_apostas.resources;
 
 
+import com.jmag.casa_de_apostas.entities.dto.IniciarPartidaDTO;
 import com.jmag.casa_de_apostas.entities.dto.JogandoDTO;
 import com.jmag.casa_de_apostas.services.JogoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +21,14 @@ public class JogoController {
         return jogoService.gerarListaAleatorio();
     }
 
-    @PostMapping
-    public Double mandarNumero(@RequestBody JogandoDTO dadosJogo){
+    @PostMapping("/comecar/jogando")
+    public Double mandarNumero(@RequestBody JogandoDTO dadosJogo) {
         return jogoService.jogando(dadosJogo);
+    }
+
+    @PostMapping("/comecar")
+    public void comecarJogo(@RequestBody IniciarPartidaDTO iniciarPartidaDTO) {
+        jogoService.iniciarPartida(iniciarPartidaDTO);
     }
 
 }
