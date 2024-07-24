@@ -20,6 +20,8 @@ public class Jogo {
     private String vetorComJogo;
     private Double valorDaAposta;
     private Integer idDoUsuario;
+    private Boolean vitoria;
+    private Double valorGanho;
 
     public Jogo(String vetorComJogo, Double valorDaAposta, Integer idDoUsuario) {
         this.vetorComJogo = vetorComJogo;

@@ -20,6 +20,9 @@ public class JogoService {
     @Autowired
     private JogoRepository repository;
 
+//    @Autowired
+//    private DashUsuarioRepository dashUsuarioRepository;
+
     private final List<Integer> listaAleatoria = new ArrayList<>();
     @Getter
     @Setter
@@ -49,12 +52,25 @@ public class JogoService {
         if (vet[posicaoNumClicado] == 1) {
             setQuantidade_de_diamantes(getQuantidade_de_diamantes() + 1);
             if (dadosJogo.encerrar()) {
-                return calculoDeGanhos(dadosJogo.idDoJogo(), getQuantidade_de_diamantes());
+                int Quantidade_de_diamantes = getQuantidade_de_diamantes();
+                setQuantidade_de_diamantes(0);
+                double valorGanho = calculoDeGanhos(dadosJogo.idDoJogo(), Quantidade_de_diamantes);
+                // Atualiza o status de vitoria e de ganho de capital
+                dadosDoJogo.get().setVitoria(true);
+                dadosDoJogo.get().setValorGanho(valorGanho);
+                repository.save(dadosDoJogo.get());
+                return valorGanho;
             }
             return (double) getQuantidade_de_diamantes();
 
         } else {
             setQuantidade_de_diamantes(0);
+
+            // Atualiza o status de vitoria e de ganho de capital
+            dadosDoJogo.get().setVitoria(false);
+            dadosDoJogo.get().setValorGanho(0.0);
+            repository.save(dadosDoJogo.get());
+
             return 0.0;
         }
     }
