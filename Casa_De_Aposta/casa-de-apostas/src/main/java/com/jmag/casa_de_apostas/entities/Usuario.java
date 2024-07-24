@@ -27,6 +27,8 @@ public class Usuario implements UserDetails {
     private String senha;
     @Enumerated(EnumType.STRING)
     private UsuarioRole role;
+    private Boolean bloqueado;
+    private String emailParaBloqueio;
 
     public Usuario(String nome, String email, String dataNascimento, String senha, UsuarioRole role) {
         this.nome = nome;
@@ -34,6 +36,8 @@ public class Usuario implements UserDetails {
         this.dataNascimento = dataNascimento;
         this.senha = senha;
         this.role = role;
+        setBloqueado(false);
+        setEmailParaBloqueio(email);
     }
 
     @Override
