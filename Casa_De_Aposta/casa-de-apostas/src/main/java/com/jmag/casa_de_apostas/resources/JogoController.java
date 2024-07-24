@@ -22,8 +22,7 @@ public class JogoController {
     }
 
     @PostMapping("/comecar")
-    public void comecarJogo(@RequestBody IniciarPartidaDTO iniciarPartidaDTO) {
-        jogoService.iniciarPartida(iniciarPartidaDTO);
+    public Integer comecarJogo(@RequestBody IniciarPartidaDTO iniciarPartidaDTO) {
+        return jogoService.iniciarPartida(iniciarPartidaDTO);
     }
-
 }
