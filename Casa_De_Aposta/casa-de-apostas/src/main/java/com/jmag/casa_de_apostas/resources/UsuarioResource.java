@@ -56,4 +56,16 @@ public class UsuarioResource {
         }
     }
 
+    @PutMapping("/bloquear/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void isBloquear(@PathVariable Integer id) {
+        try {
+            service.bloquear(id);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+
 }

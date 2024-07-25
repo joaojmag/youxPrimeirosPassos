@@ -61,6 +61,23 @@ public class UsuarioService {
         return repository.findByEmail(email);
     }
 
+    public void bloquear(Integer id) {
+        Usuario usuario = repository.findById(id).get();
+        if (!(usuario.getBloqueado())) {
+            String criptEmail = new BCryptPasswordEncoder().encode(usuario.getEmail());
+            usuario.setEmail(criptEmail);
+            usuario.setBloqueado(true);
+            usuario.setId(usuario.getId());
+            save(usuario);
+        } else {
+            usuario.setEmail(usuario.getEmailParaBloqueio());
+            usuario.setBloqueado(false);
+            usuario.setId(usuario.getId());
+            save(usuario);
+        }
+    }
+
+
     private boolean verificarSenha(Usuario usuario) {
 
         // Expressão regular para verificar se contém pelo menos uma letra maiúscula, um número e um caractere especial
