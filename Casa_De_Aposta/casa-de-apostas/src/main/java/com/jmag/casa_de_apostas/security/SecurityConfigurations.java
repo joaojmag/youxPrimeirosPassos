@@ -28,7 +28,7 @@ public class SecurityConfigurations {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.POST, "/api/auth/**").permitAll()
-                        .requestMatchers(HttpMethod.POST,"/api/usuarios").hasRole("ADMIN")
+                        .requestMatchers("/api/usuarios/**").permitAll()//.hasRole("ADMIN")
                         .requestMatchers("/api/jogo/**").permitAll()//.hasAnyRole("ADMIN","USER")
                         .anyRequest().authenticated()
                 )
@@ -45,5 +45,4 @@ public class SecurityConfigurations {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
 }
