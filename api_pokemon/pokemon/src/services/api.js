@@ -16,3 +16,7 @@ export async function buscarParametro(quantidade) {
     const limite = 9
     return await api.get(`/pokemon?offset=${quantidade}&limit=${limite}`)
 }
+
+// export async function mandarPorPost(obj){
+//     return await api.post(`/pokemon/`, obj)
+// }

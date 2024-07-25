@@ -77,7 +77,6 @@ public class UsuarioService {
         }
     }
 
-
     private boolean verificarSenha(Usuario usuario) {
 
         // Expressão regular para verificar se contém pelo menos uma letra maiúscula, um número e um caractere especial
