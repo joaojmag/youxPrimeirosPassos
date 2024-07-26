@@ -5,9 +5,7 @@ import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMailMessage;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +30,8 @@ public class EmailConfirmacaoService {
 
         template = template.replace("{nome}", registerDTO.nome());
         template = template.replace("{nome do servico}", "Casa de Aposta do João");
+        template = template.replace("{email}", registerDTO.email());
+
         helper.setText(template, true);
         mailSender.send(message);
 

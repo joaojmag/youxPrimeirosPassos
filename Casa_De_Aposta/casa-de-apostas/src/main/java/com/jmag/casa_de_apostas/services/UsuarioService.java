@@ -1,6 +1,7 @@
 package com.jmag.casa_de_apostas.services;
 
 import com.jmag.casa_de_apostas.entities.Usuario;
+import com.jmag.casa_de_apostas.entities.dto.RegisterDTO;
 import com.jmag.casa_de_apostas.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -75,6 +76,22 @@ public class UsuarioService {
             usuario.setId(usuario.getId());
             save(usuario);
         }
+    }
+
+    public void bloqueandoParaValidar(RegisterDTO data) {
+        Usuario usuario = repository.findByEmailParaBloqueio(data.email()).get();
+        String criptEmail = new BCryptPasswordEncoder().encode(usuario.getEmail());
+        usuario.setEmail(criptEmail);
+        usuario.setId(usuario.getId());
+        save(usuario);
+    }
+
+    public String desbloqueandoParaValidar(String email) {
+        Usuario usuario = repository.findByEmailParaBloqueio(email).get();
+        usuario.setEmail(usuario.getEmailParaBloqueio());
+        usuario.setId(usuario.getId());
+        save(usuario);
+        return "E-mail desbloqueado com sucesso!";
     }
 
     private boolean verificarSenha(Usuario usuario) {
