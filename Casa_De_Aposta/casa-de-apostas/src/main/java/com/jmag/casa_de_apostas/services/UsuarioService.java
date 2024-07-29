@@ -1,6 +1,7 @@
 package com.jmag.casa_de_apostas.services;
 
 import com.jmag.casa_de_apostas.entities.Usuario;
+import com.jmag.casa_de_apostas.entities.dto.LogandoDTO;
 import com.jmag.casa_de_apostas.entities.dto.RegisterDTO;
 import com.jmag.casa_de_apostas.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,7 @@ public class UsuarioService {
 
     public Usuario save(Usuario usuario) {
 
-        if (verificarSenha(usuario)) {
+        if (verificarSenha(usuario.getSenha())) {
             String encryptedPassword = new BCryptPasswordEncoder().encode(usuario.getSenha());
             usuario.setSenha(encryptedPassword);
             return repository.save(usuario);
@@ -94,11 +95,27 @@ public class UsuarioService {
         return "E-mail desbloqueado com sucesso!";
     }
 
-    private boolean verificarSenha(Usuario usuario) {
+    //  estou reaproveitando o LogandoDTO
+    public String resetarSenha(LogandoDTO logandoDTO) {
+        if (verificarSenha(logandoDTO.password())) {
+            Optional<Usuario> usuario = repository.findByEmailParaBloqueio(logandoDTO.login());
+            if (usuario.isPresent()) {
+                Usuario usuario1 = usuario.get();
+                String criptEmail = new BCryptPasswordEncoder().encode(logandoDTO.login());
+                usuario1.setSenha(criptEmail);
+                save(usuario1);
+                return "OK";
+            }
+            return "Usuario não cadastrado ou usuario invalido";
+        }
+        return "Senha não compativel";
+    }
+
+    private boolean verificarSenha(String senha) {
 
         // Expressão regular para verificar se contém pelo menos uma letra maiúscula, um número e um caractere especial
         String chaveParaVerificacao = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?]).{8,}$";
-        String senha = usuario.getSenha();
+//        String senha = usuario.getSenha();
 
         Pattern pattern = Pattern.compile(chaveParaVerificacao);
         Matcher matcher = pattern.matcher(senha);

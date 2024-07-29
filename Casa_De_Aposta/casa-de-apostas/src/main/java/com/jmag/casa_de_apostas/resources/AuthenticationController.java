@@ -57,6 +57,11 @@ public class AuthenticationController {
         return ResponseEntity.ok().build();
     }
 
+    @PostMapping("/resetar/senha")
+    public String resetarSenha(@RequestBody LogandoDTO logandoDTO) {
+        return service.resetarSenha(logandoDTO);
+    }
+
     @GetMapping("/ativando/{email}")
     public String validandoemail(@PathVariable String email) {
         return service.desbloqueandoParaValidar(email);
