@@ -1,29 +1,22 @@
 <template>
   <div>
-    {{ user.frist_name + " " + user.last_name }}
-    <button v-on:click="clicando">Clicar</button><br>
 
-    {{ fullName }}<br>
+    <input v-model="name" type="text"><br>
 
-    <div v-for="i in todosNaoCompletadas" v-bind:key="i.id">
-      {{ i.title }}
+    {{ name }}
 
-    </div>
     <br>
     <br>
     <br>
+    <input v-model="user.frist_name" type="text"><br>
+    <input v-model="user.last_name" type="text">
 
-    <div v-for="i in todosCompletadas" v-bind:key="i.id">
-      {{ i.title }}
-    </div>
-
-    <h2>Todos</h2>
-    <div v-for="i in todos" v-bind:key="i.id">
-      <input type="checkbox" v-model="i.completed">
-      {{ i.title }}
-    </div>
-
-
+    <select v-model="pageCount">
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="15">15</option>
+    </select>
+    {{ pageCount }}
 
   </div>
 </template>
@@ -33,59 +26,44 @@ export default {
   name: 'App',
   data() {
     return {
+      name: '',
+      pageCount: 5,
       user: {
-        frist_name: 'jaoa',
-        last_name: 'marcelo'
+        frist_name: '',
+        last_name: ''
+      }
+
+    }
+  },
+  watch: {
+    name(novoValor, velhoValor) {
+      console.log(novoValor, velhoValor);
+      if (novoValor.length >= 3) {
+        this.mostraValor();
+      }
+    },
+    pageCount() {
+      this.changePage();
+    },
+    user: {
+      handler() {
+        console.log('user alterado');
       },
-      todos: [
-        {
-          "userId": 1,
-          "id": 1,
-          "title": "delectus aut autem",
-          "completed": false
-        },
-        {
-          "userId": 1,
-          "id": 2,
-          "title": "quis ut nam facilis et officia qui",
-          "completed": false
-        },
-        {
-          "userId": 1,
-          "id": 3,
-          "title": "fugiat veniam minus",
-          "completed": false
-        },
-        {
-          "userId": 1,
-          "id": 4,
-          "title": "et porro tempora",
-          "completed": true
-        },
-        {
-          "userId": 1,
-          "id": 5,
-          "title": "laboriosam mollitia et enim quasi adipisci quia provident illum",
-          "completed": false
-        }
-      ]
+      deep: true
     }
   },
+
   computed: {
-    fullName() {
-      return `${this.user.frist_name} ${this.user.last_name}`
-    },
-    todosNaoCompletadas() {
-      return this.todos.filter(e => !e.completed);
-    },
-    todosCompletadas() {
-      return this.todos.filter(e => e.completed);
-    }
   },
+
   methods: {
-    clicando() {
-      console.log(this.user);
+    mostraValor() {
+      console.log('mostrar');
+    },
+    changePage() {
+      console.log('Ajax');
     }
+
   }
 }
 </script>
