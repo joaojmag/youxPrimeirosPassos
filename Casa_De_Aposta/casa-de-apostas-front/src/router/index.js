@@ -21,6 +21,11 @@ const router = createRouter({
       path: '/cadastro',
       name: 'cadastro',
       component: () => import('../views/TelaDeCadastro.vue')
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('../views/TelaLogin.vue')
     }
   ]
 })
