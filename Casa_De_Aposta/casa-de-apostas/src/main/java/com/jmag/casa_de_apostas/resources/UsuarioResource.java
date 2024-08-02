@@ -9,6 +9,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/api/usuarios")
 public class UsuarioResource {
@@ -64,8 +65,5 @@ public class UsuarioResource {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
     }
-
-
 }

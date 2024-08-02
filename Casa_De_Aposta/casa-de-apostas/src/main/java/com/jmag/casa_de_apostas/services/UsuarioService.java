@@ -53,7 +53,7 @@ public class UsuarioService {
                 .findById(id)
                 .map(e -> {
                     usuario.setId(e.getId());
-                    save(usuario);
+                    repository.save(usuario);
                     return e;
                 }).orElseThrow(() ->
                         new ResponseStatusException(HttpStatus.NOT_FOUND));
@@ -70,12 +70,12 @@ public class UsuarioService {
             usuario.setEmail(criptEmail);
             usuario.setBloqueado(true);
             usuario.setId(usuario.getId());
-            save(usuario);
+            repository.save(usuario);
         } else {
             usuario.setEmail(usuario.getEmailParaBloqueio());
             usuario.setBloqueado(false);
             usuario.setId(usuario.getId());
-            save(usuario);
+            repository.save(usuario);
         }
     }
 
@@ -84,14 +84,14 @@ public class UsuarioService {
         String criptEmail = new BCryptPasswordEncoder().encode(usuario.getEmail());
         usuario.setEmail(criptEmail);
         usuario.setId(usuario.getId());
-        save(usuario);
+        repository.save(usuario);
     }
 
     public String desbloqueandoParaValidar(String email) {
         Usuario usuario = repository.findByEmailParaBloqueio(email).get();
         usuario.setEmail(usuario.getEmailParaBloqueio());
         usuario.setId(usuario.getId());
-        save(usuario);
+        repository.save(usuario);
         return "E-mail desbloqueado com sucesso!";
     }
 
@@ -103,7 +103,7 @@ public class UsuarioService {
                 Usuario usuario1 = usuario.get();
                 String criptEmail = new BCryptPasswordEncoder().encode(logandoDTO.login());
                 usuario1.setSenha(criptEmail);
-                save(usuario1);
+                repository.save(usuario1);
                 return "OK";
             }
             return "Usuario não cadastrado ou usuario invalido";
