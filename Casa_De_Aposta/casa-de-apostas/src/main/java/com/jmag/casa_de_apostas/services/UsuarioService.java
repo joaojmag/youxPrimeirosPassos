@@ -101,9 +101,10 @@ public class UsuarioService {
             Optional<Usuario> usuario = repository.findByEmailParaBloqueio(logandoDTO.login());
             if (usuario.isPresent()) {
                 Usuario usuario1 = usuario.get();
-                String criptEmail = new BCryptPasswordEncoder().encode(logandoDTO.login());
-                usuario1.setSenha(criptEmail);
-                repository.save(usuario1);
+//                String criptEmail = new BCryptPasswordEncoder().encode(logandoDTO.password());
+//                usuario1.setSenha(criptEmail);
+                usuario1.setSenha(logandoDTO.password());
+                save(usuario1);
                 return "OK";
             }
             return "Usuario não cadastrado ou usuario invalido";
