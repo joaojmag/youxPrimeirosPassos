@@ -1,6 +1,7 @@
 package com.jmag.casa_de_apostas.services;
 
 import com.jmag.casa_de_apostas.entities.Jogo;
+import com.jmag.casa_de_apostas.entities.Usuario;
 import com.jmag.casa_de_apostas.entities.dto.IniciarPartidaDTO;
 import com.jmag.casa_de_apostas.entities.dto.JogandoDTO;
 import com.jmag.casa_de_apostas.repositories.JogoRepository;
@@ -100,5 +101,9 @@ public class JogoService {
             listaAleatoria.add(random.nextInt(2));
         }
         return listaAleatoria;
+    }
+
+    public List<Jogo> findAll() {
+        return repository.findAll();
     }
 }
