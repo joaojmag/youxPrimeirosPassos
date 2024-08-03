@@ -22,6 +22,7 @@ export default {
         <RouterLink to="/cadastro">Tela de cadastro</RouterLink>
         <RouterLink to="/login">Tela de login</RouterLink>
         <RouterLink to="/perfiladm">Perfil ADM</RouterLink>
+        <RouterLink to="/perfilusuario">Perfil do Usuário</RouterLink>
       </nav>
       
     </div>
