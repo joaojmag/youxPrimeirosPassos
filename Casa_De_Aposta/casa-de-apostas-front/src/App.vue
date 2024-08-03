@@ -18,9 +18,10 @@ export default {
 
       <nav>
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+        <!-- <RouterLink to="/about">About</RouterLink> -->
         <RouterLink to="/cadastro">Tela de cadastro</RouterLink>
         <RouterLink to="/login">Tela de login</RouterLink>
+        <RouterLink to="/perfiladm">Perfil ADM</RouterLink>
       </nav>
       
     </div>

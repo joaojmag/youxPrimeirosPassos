@@ -8,6 +8,10 @@ export async function buscarTodos() {
   return await api.get('/usuarios')
 }
 
+export async function buscarTodosJogos() {
+  return await api.get('/jogo')
+}
+
 export async function buscarPorId(id) {
   return await api.get(`/usuarios/${id}`)
 }
