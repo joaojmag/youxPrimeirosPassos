@@ -54,8 +54,12 @@ export default {
                 password: this.senha
             }
             try {
-                const token = await fazerLogin(objLogando);
-                console.log(token.data);
+                const { data } = await fazerLogin(objLogando);
+
+                const token = data.token;
+                localStorage.setItem('authToken', token);
+
+                console.log("data -> ", token);
 
             } catch (error) {
                 console.log("Erro ao logar ", error);

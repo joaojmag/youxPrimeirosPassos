@@ -82,6 +82,4 @@ export default {
 
 </script>
 
-<style>
-.perfilUser {}
-</style>
+<style></style>
