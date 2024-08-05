@@ -27,8 +27,8 @@ public class SecurityConfigurations {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers( "/api/auth/**").permitAll()
-                        .requestMatchers("/api/usuarios/**").permitAll()//.hasRole("ADMIN")
-                        .requestMatchers("/api/jogo/**").permitAll()//.hasAnyRole("ADMIN","USER")
+                        .requestMatchers("/api/usuarios/**").hasAnyRole("ADMIN","USER")//.hasRole("ADMIN")
+                        .requestMatchers("/api/jogo/**").hasAnyRole("ADMIN","USER")
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)

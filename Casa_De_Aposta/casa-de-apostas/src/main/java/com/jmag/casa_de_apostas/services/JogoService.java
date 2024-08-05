@@ -28,7 +28,9 @@ public class JogoService {
     @Getter
     @Setter
     private int quantidade_de_diamantes;
-
+    @Getter
+    @Setter
+    private boolean acertouOuNao;
     Random random = new Random();
 
     public Integer iniciarPartida(IniciarPartidaDTO iniciar) {
@@ -50,8 +52,16 @@ public class JogoService {
         Optional<Jogo> dadosDoJogo = repository.findById(dadosJogo.idDoJogo());
         Integer[] vet = vetorComAsPosicoesDoJogo(dadosDoJogo);
 
-        if (vet[posicaoNumClicado] == 1) {
-            setQuantidade_de_diamantes(getQuantidade_de_diamantes() + 1);
+        if (posicaoNumClicado == 25) {
+            setAcertouOuNao(true);
+        } else {
+            setAcertouOuNao(vet[posicaoNumClicado] == 1);
+        }
+
+        if (acertouOuNao) {
+            if (posicaoNumClicado != 25)
+                setQuantidade_de_diamantes(getQuantidade_de_diamantes() + 1);
+
             if (dadosJogo.encerrar()) {
                 int Quantidade_de_diamantes = getQuantidade_de_diamantes();
                 setQuantidade_de_diamantes(0);
@@ -62,7 +72,7 @@ public class JogoService {
                 repository.save(dadosDoJogo.get());
                 return valorGanho;
             }
-            return (double) getQuantidade_de_diamantes();
+            return 1.0;//(double) getQuantidade_de_diamantes();
 
         } else {
             setQuantidade_de_diamantes(0);
