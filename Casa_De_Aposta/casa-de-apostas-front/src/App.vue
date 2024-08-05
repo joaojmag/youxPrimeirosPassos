@@ -17,10 +17,10 @@ export default {
     <div class="wrapper">
 
       <nav>
-        <!--   <RouterLink to="/">Home</RouterLink>-->
+        <!-- <RouterLink to="/">Home</RouterLink> -->
         <!-- <RouterLink to="/about">About</RouterLink> -->
+        <RouterLink to="/">Tela de login</RouterLink>
         <RouterLink to="/cadastro">Tela de cadastro</RouterLink>
-        <RouterLink to="/login">Tela de login</RouterLink>
         <RouterLink to="/perfiladm">Perfil ADM</RouterLink>
         <RouterLink to="/perfilusuario">Perfil do Usuário</RouterLink>
         <RouterLink to="/jogo">Jogo</RouterLink>

@@ -1,8 +1,14 @@
 import axios from 'axios';
+import { Buffer } from 'buffer';
 
 // Função para obter o token de autenticação do localStorage
 function getAuthToken() {
   return localStorage.getItem('authToken');
+}
+
+export function parseJwt() {
+  const token = getAuthToken();
+  return JSON.parse(Buffer.from(token.split('.')[1], 'base64').toString());
 }
 
 const api = axios.create({
@@ -13,7 +19,7 @@ const api = axios.create({
 api.interceptors.request.use(config => {
   const token = getAuthToken();
   if (token) {
-    config.headers['Authorization'] = `Bearer ${token}`; 
+    config.headers['Authorization'] = `Bearer ${token}`;
   }
   return config;
 }, error => {

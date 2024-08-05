@@ -4,18 +4,18 @@ import HomeView from '../views/HomeView.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: HomeView
-    },
+    // {
+    //   path: '/',
+    //   name: 'home',
+    //   component: HomeView
+    // },
     {
       path: '/cadastro',
       name: 'cadastro',
       component: () => import('../views/TelaDeCadastro.vue')
     },
     {
-      path: '/login',
+      path: '/',
       name: 'login',
       component: () => import('../views/TelaLogin.vue')
     },

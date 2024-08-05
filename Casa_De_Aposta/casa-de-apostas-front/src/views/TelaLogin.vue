@@ -59,8 +59,6 @@ export default {
                 const token = data.token;
                 localStorage.setItem('authToken', token);
 
-                console.log("data -> ", token);
-
             } catch (error) {
                 console.log("Erro ao logar ", error);
             }

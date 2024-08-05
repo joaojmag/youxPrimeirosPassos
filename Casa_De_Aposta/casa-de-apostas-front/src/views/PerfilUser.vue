@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { buscarTodosJogos, buscarTodos } from '@/components/services/api'
+import { buscarTodosJogos, parseJwt } from '@/components/services/api'
 import { toRaw } from 'vue';
 
 export default {
@@ -16,9 +16,9 @@ export default {
 
     data() {
         return {
-            nome: '',
+            nome: parseJwt().name,
             jogos: [],
-            idJogador: ''
+            idJogador: parseJwt().id
         }
     },
 
@@ -32,17 +32,7 @@ export default {
                 console.log("Erro ao carregar jogadores ", error);
             }
         },
-        // para testar a aplicação
-        async buscandoTodosUsuarios() {
 
-            try {
-                const { data } = await buscarTodos();
-                this.idJogador = data[0].id;
-                this.nome = data[0].nome;
-            } catch (error) {
-                console.log("Erro ao carregar jogadores ", error);
-            }
-        },
         totaldeJogos(idUser) {
             return this.dadosDoJogo(idUser).length
         },
@@ -75,7 +65,6 @@ export default {
 
     mounted() {
         this.buscandoTodosJogos();
-        this.buscandoTodosUsuarios();
     }
 
 }

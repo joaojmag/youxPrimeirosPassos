@@ -21,7 +21,7 @@
 
 
 <script>
-import { iniciarPartida, jogando } from '@/components/services/api'
+import { iniciarPartida, jogando, parseJwt } from '@/components/services/api'
 
 
 export default {
@@ -49,7 +49,7 @@ export default {
                 const partida = {
                     valorDaAposta: this.valor,
                     iniciar: true,
-                    idDoUsuario: 1253
+                    idDoUsuario: parseJwt().id
                 }
                 const { data } = await iniciarPartida(partida);
                 console.log('data ->', data)
