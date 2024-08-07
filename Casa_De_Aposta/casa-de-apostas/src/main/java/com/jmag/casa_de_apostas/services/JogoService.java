@@ -10,6 +10,7 @@ import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -69,6 +70,8 @@ public class JogoService {
                 // Atualiza o status de vitoria e de ganho de capital
                 dadosDoJogo.get().setVitoria(true);
                 dadosDoJogo.get().setValorGanho(valorGanho);
+                dadosDoJogo.get().setDataJogo(LocalDate.now());
+                dadosDoJogo.get().setNumeroDiamantes(Quantidade_de_diamantes);
                 repository.save(dadosDoJogo.get());
                 return valorGanho;
             }
@@ -80,10 +83,20 @@ public class JogoService {
             // Atualiza o status de vitoria e de ganho de capital
             dadosDoJogo.get().setVitoria(false);
             dadosDoJogo.get().setValorGanho(0.0);
+            dadosDoJogo.get().setDataJogo(LocalDate.now());
+            dadosDoJogo.get().setNumeroDiamantes(getQuantidade_de_diamantes());
             repository.save(dadosDoJogo.get());
 
             return 0.0;
         }
+    }
+
+    public List<Jogo> findAll() {
+        return repository.findAll();
+    }
+
+    public List<Jogo> paginacao(Integer id){
+        return repository.paginacao(id,3,1);
     }
 
     private Integer[] vetorComAsPosicoesDoJogo(Optional<Jogo> dadosDoJogo) {
@@ -111,9 +124,5 @@ public class JogoService {
             listaAleatoria.add(random.nextInt(2));
         }
         return listaAleatoria;
-    }
-
-    public List<Jogo> findAll() {
-        return repository.findAll();
     }
 }

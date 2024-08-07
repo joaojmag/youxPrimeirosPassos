@@ -29,7 +29,12 @@ public class JogoController {
     }
 
     @GetMapping
-    public List<Jogo> getAllJogo(){
+    public List<Jogo> getAllJogo() {
         return jogoService.findAll();
+    }
+
+    @GetMapping("/paginacao/{id}")
+    public List<Jogo> getPaginas(@PathVariable Integer id) {
+        return jogoService.paginacao(id);
     }
 }

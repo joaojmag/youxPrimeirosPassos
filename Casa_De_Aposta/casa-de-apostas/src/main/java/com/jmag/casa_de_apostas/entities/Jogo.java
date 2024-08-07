@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 @Entity(name = "tb_jogo")
 @Table(name = "tb_jogo")
 @Getter
@@ -22,6 +24,8 @@ public class Jogo {
     private Integer idDoUsuario;
     private Boolean vitoria;
     private Double valorGanho;
+    private Integer numeroDiamantes;
+    private LocalDate dataJogo;
 
     public Jogo(String vetorComJogo, Double valorDaAposta, Integer idDoUsuario) {
         this.vetorComJogo = vetorComJogo;
