@@ -73,8 +73,8 @@ export async function iniciarPartida(iniciar) {
   return await api.post('/jogo/comecar', iniciar)
   // {
   //   "valorDaAposta": int,
-  //     "iniciar": boolean,
-  //       "idDoUsuario": int
+  //   "iniciar": boolean,
+  //   "idDoUsuario": int
   // }
 }
 
@@ -82,7 +82,15 @@ export async function jogando(jogando) {
   return await api.post('/jogo/comecar/jogando', jogando)
   // {
   //   "posicaoNumClicado" : int,
-  //     "encerrar": boolean,
-  //       "idDoJogo": int
+  //   "encerrar": boolean,
+  //   "idDoJogo": int
+  // }
+}
+
+export async function jogosPorPagina(pagina) {
+  return await api.get('/jogo/paginacao', pagina)
+  // {
+  //   "id": int,
+  //   "numeroDaPagina" : int
   // }
 }
