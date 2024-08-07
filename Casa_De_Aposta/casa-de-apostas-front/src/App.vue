@@ -13,26 +13,20 @@ export default {
 
 <template>
   <header>
-
     <div class="wrapper">
-
       <nav>
-        <!-- <RouterLink to="/">Home</RouterLink> -->
-        <!-- <RouterLink to="/about">About</RouterLink> -->
         <RouterLink to="/">Tela de login</RouterLink>
         <RouterLink to="/cadastro">Tela de cadastro</RouterLink>
         <RouterLink to="/perfiladm">Perfil ADM</RouterLink>
         <RouterLink to="/perfilusuario">Perfil do Usuário</RouterLink>
         <RouterLink to="/jogo">Jogo</RouterLink>
       </nav>
-
     </div>
   </header>
   <RouterView />
-
 </template>
 
-<style scoped>
+<!-- <style scoped>
 header {
   line-height: 1.5;
   max-height: 100vh;
@@ -94,4 +88,4 @@ nav a:first-of-type {
     margin-top: 1rem;
   }
 }
-</style>
+</style> -->

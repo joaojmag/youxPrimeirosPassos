@@ -4,6 +4,7 @@
         <p>Total de jogos {{ totaldeJogos(idJogador) }} </p>
         <p> Jogos ganhos {{ jogosGanhos(idJogador) }} | Valor recebido R$ {{ valoresGanos(idJogador) }}</p>
         <p>Jogos perdidos {{ jogosPerdidos(idJogador) }} | Valor perdido R$ -{{ valoresPerdidos(idJogador) }}</p>
+        <button @click="irJogo">Novo Jogo</button>
     </div>
 </template>
 
@@ -60,6 +61,9 @@ export default {
 
         dadosDoJogo(idUser) {
             return toRaw(this.jogos).filter(e => e.idDoUsuario === idUser);
+        },
+        irJogo(){
+            this.$router.push('/jogo')
         }
     },
 

@@ -6,6 +6,10 @@ function getAuthToken() {
   return localStorage.getItem('authToken');
 }
 
+export function limparLocalStorage() {
+  localStorage.removeItem('authToken')
+}
+
 export function parseJwt() {
   const token = getAuthToken();
   return JSON.parse(Buffer.from(token.split('.')[1], 'base64').toString());
@@ -23,20 +27,20 @@ api.interceptors.request.use(config => {
   }
   return config;
 }, error => {
-  return Promise.reject(error);
+  return Promise.reject('Erro na api', error);
 });
 
 // Altenticação
 export async function criarUsuario(usuario) {
-  return await api.post(`/auth/register`, usuario)
+  return await api.post('/auth/register', usuario)
 }
 
 export async function fazerLogin(usuario) {
-  return await api.post(`/auth/login`, usuario)
+  return await api.post('/auth/login', usuario)
 }
 
 export async function resetarSenha(usuario) {
-  return await api.post(`/auth/resetar/senha`, usuario)
+  return await api.post('/auth/resetar/senha', usuario)
 }
 
 // Usuario

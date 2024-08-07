@@ -1,10 +1,10 @@
 <template>
     <div class="calasseJogo">
-        <h1>Vamos Jogar!!</h1>
+        <!-- <h1>Vamos Jogar!!</h1> -->
         <form v-if="cabecalho" class="valorAposta" @submit.prevent="comecarPartida">
-            <label>Valor da aposta</label>
+            <label style="margin-top: 15%;"><strong> Digite o valor da aposta</strong></label>
             <input type="number" id="valor" v-model="valor" required />
-            <button type="submit">Iniciar Jogo</button>
+            <button type="submit">INICIAR</button>
         </form>
 
         <div v-if="!cabecalho" class="jogando">
@@ -102,14 +102,49 @@ export default {
 .calasseJogo {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgb(34, 34, 34);
+    width: 100%;
+    height: 100vh;
 }
 
 .valorAposta {
     display: flex;
     flex-direction: column;
-    width: 250px;
-    row-gap: 15px;
+    align-items: center;
+    background: #D9D9D9;
+    width: 80%;
+    height: 80%;
+    border-radius: 15px;
+    /* row-gap: 15px; */
 }
+
+.valorAposta label {
+    position: relative;
+    right: 23%;
+    margin-top: 5%;
+}
+
+.valorAposta input {
+    width: 65%;
+    height: 5%;
+    border-radius: 15px;
+}
+
+.valorAposta button {
+    margin-top: 20%;
+    font-size: 45px;
+    font-style: italic;
+    background: #8E2B39;
+    border-radius: 15px;
+    color: #fff;
+    width: 25%;
+    height: 2em;
+    cursor: pointer;
+
+}
+
 
 .jogando {
     display: flex;
