@@ -3,7 +3,9 @@ package com.jmag.casa_de_apostas.services;
 import com.jmag.casa_de_apostas.entities.Jogo;
 import com.jmag.casa_de_apostas.entities.Usuario;
 import com.jmag.casa_de_apostas.entities.dto.IniciarPartidaDTO;
+import com.jmag.casa_de_apostas.entities.dto.InputPaginacaoDTO;
 import com.jmag.casa_de_apostas.entities.dto.JogandoDTO;
+import com.jmag.casa_de_apostas.entities.dto.PaginacaoDTO;
 import com.jmag.casa_de_apostas.repositories.JogoRepository;
 import lombok.Getter;
 import lombok.Setter;
@@ -95,8 +97,11 @@ public class JogoService {
         return repository.findAll();
     }
 
-    public List<Jogo> paginacao(Integer id){
-        return repository.paginacao(id,3,1);
+    public PaginacaoDTO paginacao(InputPaginacaoDTO dto) {
+        return new PaginacaoDTO(
+                repository.paginacao(dto.id(), 5, (dto.numeroDaPagina() - 1) * 5),
+                (int) Math.ceil((double) repository.totalDeJogos(dto.id()) / 5)
+        );
     }
 
     private Integer[] vetorComAsPosicoesDoJogo(Optional<Jogo> dadosDoJogo) {

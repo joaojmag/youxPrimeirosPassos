@@ -3,7 +3,9 @@ package com.jmag.casa_de_apostas.resources;
 
 import com.jmag.casa_de_apostas.entities.Jogo;
 import com.jmag.casa_de_apostas.entities.dto.IniciarPartidaDTO;
+import com.jmag.casa_de_apostas.entities.dto.InputPaginacaoDTO;
 import com.jmag.casa_de_apostas.entities.dto.JogandoDTO;
+import com.jmag.casa_de_apostas.entities.dto.PaginacaoDTO;
 import com.jmag.casa_de_apostas.services.JogoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -33,8 +35,8 @@ public class JogoController {
         return jogoService.findAll();
     }
 
-    @GetMapping("/paginacao/{id}")
-    public List<Jogo> getPaginas(@PathVariable Integer id) {
-        return jogoService.paginacao(id);
+    @GetMapping("/paginacao")
+    public PaginacaoDTO getPaginas(@RequestBody InputPaginacaoDTO dto) {
+        return jogoService.paginacao(dto);
     }
 }
