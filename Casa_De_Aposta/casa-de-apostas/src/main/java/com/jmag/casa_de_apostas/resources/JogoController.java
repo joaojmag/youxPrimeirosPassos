@@ -35,7 +35,7 @@ public class JogoController {
         return jogoService.findAll();
     }
 
-    @GetMapping("/paginacao")
+    @PostMapping("/paginacao")
     public PaginacaoDTO getPaginas(@RequestBody InputPaginacaoDTO dto) {
         return jogoService.paginacao(dto);
     }
