@@ -88,7 +88,7 @@ export async function jogando(jogando) {
 }
 
 export async function jogosPorPagina(pagina) {
-  return await api.get('/jogo/paginacao', pagina)
+  return await api.post('/jogo/paginacao', pagina)
   // {
   //   "id": int,
   //   "numeroDaPagina" : int
