@@ -12,7 +12,7 @@ export default {
 </script>
 
 <template>
-  <header>
+  <!-- <header>
     <div class="wrapper">
       <nav>
         <RouterLink to="/">Tela de login</RouterLink>
@@ -22,7 +22,7 @@ export default {
         <RouterLink to="/jogo">Jogo</RouterLink>
       </nav>
     </div>
-  </header>
+  </header> -->
   <RouterView />
 </template>
 

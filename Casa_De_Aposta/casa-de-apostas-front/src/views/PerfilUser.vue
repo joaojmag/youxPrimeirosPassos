@@ -5,7 +5,7 @@
             <div class="aba1"><strong>Vitórias: <p> {{ vitorias }}</p> </strong>
                 <strong>Derotas: <p>{{ derotas }}</p></strong>
             </div>
-            <div class="aba2"><strong>Saldo: <p>R$ {{ ver ? saldo.toFixed(2) : '-----------' }}</p></strong>
+            <div class="aba2"><strong>Saldo: <p>R$ {{ ver ? saldo?.toFixed(2) : '-----------' }}</p></strong>
                 <img v-if="ver" @click="visualizar" src="../assets/Eye.svg" alt="">
                 <img v-else="ver" @click="visualizar" src="../assets/Eye_off.svg" alt="">
             </div>
@@ -127,9 +127,9 @@ export default {
             this.totalItems = data.totalPaginas;
             this.jogosDoUsuario = data.jogos;
             this.vitoriaEvalores = data.vitoriasEvalore;
-            this.vitorias = data.vitoriasEvalore[1].count;
-            this.derotas = data.vitoriasEvalore[0].count;
-            this.saldo = data.vitoriasEvalore[1].sum;
+            this.vitorias = data.vitoriasEvalore[1]?.count;
+            this.derotas = data.vitoriasEvalore[0]?.count;
+            this.saldo = data.vitoriasEvalore[1]?.sum;
         },
         visualizar() {
             this.ver = !this.ver
