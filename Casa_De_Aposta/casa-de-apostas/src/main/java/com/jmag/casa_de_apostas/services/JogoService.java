@@ -101,7 +101,8 @@ public class JogoService {
         return new PaginacaoDTO(
                 repository.paginacao(dto.id(), 5, (dto.numeroDaPagina() - 1) * 5),
 //                (int) Math.ceil((double) repository.totalDeJogos(dto.id()) / 5)
-                repository.totalDeJogos(dto.id())
+                repository.totalDeJogos(dto.id()),
+                repository.vitoriasEvalores(dto.id())
         );
     }
 
