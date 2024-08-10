@@ -3,15 +3,12 @@
         <div id="login" class="login" v-if="telas">
             <h1>Login YOUX</h1>
             <form @submit.prevent="fazendoLogin">
-                <!-- <label>E-mail</label> -->
                 <input type="text" id="email" class="email" v-model="email" required>
 
-                <!-- <label>Senha</label> -->
                 <div class="visualizarSenha">
                     <input v-bind:type="ver ? 'password' : 'text'" id="senha" class="senha" v-model="senha" required />
                     <img v-if="ver" @click="visualizar" src="../assets/Eye_off.svg" alt="">
                     <img v-else="ver" @click="visualizar" src="../assets/Eye.svg" alt="">
-                    <!-- <div @click="visualizar">{{ ver ? "ver senha" : "esconder senha" }}</div> -->
                 </div>
 
                 <button type="submit">ENTRAR</button>
@@ -21,19 +18,15 @@
         <div id="resetarSenha" class="login" v-if="!telas">
             <h1>Resetar a senha</h1>
             <form @submit.prevent="recuperarSenha">
-                <!-- <label>E-mail</label> -->
                 <input type="text" id="emailRec" class="email" v-model="emailRec" required />
 
-                <!-- <label>Senha</label> -->
                 <div class="visualizarSenha">
                     <input v-bind:type="verRec ? 'password' : 'text'" id="senhaRec" class="senha" v-model="senhaRec"
                         required />
                     <img v-if="verRec" @click="visualizarRec" src="../assets/Eye_off.svg" alt="">
                     <img v-else="verRec" @click="visualizarRec" src="../assets/Eye.svg" alt="">
-                    <!-- <div @click="visualizarRec">{{ verRec ? "ver senha" : "esconder senha" }}</div> -->
                 </div>
                 <button type="submit">Resetar Senha</button>
-                <!-- <button @click="alternar" id="btn_voltar_login">Voltar ao Login</button> -->
             </form>
         </div>
 
@@ -102,7 +95,6 @@ export default {
             }
             try {
                 const retornoSenha = await resetarSenha(objResetar);
-                console.log(retornoSenha.data);
 
             } catch (error) {
                 console.log("Erro ao resetar a senha ", error);

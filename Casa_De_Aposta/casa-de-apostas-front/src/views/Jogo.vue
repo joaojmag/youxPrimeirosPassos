@@ -24,7 +24,7 @@
 
 
 <script>
-import { iniciarPartida, jogando, buscarJogoId, parseJwt } from '@/components/services/api'
+import { iniciarPartida, jogando, buscarJogoId, infomacesToken } from '@/components/services/api'
 
 
 export default {
@@ -56,7 +56,7 @@ export default {
                 const partida = {
                     valorDaAposta: this.valor,
                     iniciar: true,
-                    idDoUsuario: parseJwt().id
+                    idDoUsuario: infomacesToken().id
                 }
                 const { data } = await iniciarPartida(partida);
                 this.idJogo = data
@@ -138,7 +138,7 @@ export default {
     justify-content: center;
     background: #D9D9D9;
     width: 100%;
-    height: 100vh;
+    height: 92vh;
 }
 
 .valorAposta {
@@ -181,7 +181,7 @@ export default {
     justify-content: space-around;
     align-items: center;
     width: 100%;
-    height: 100vh;
+    height: 92vh;
 }
 
 .jogo {

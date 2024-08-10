@@ -10,7 +10,7 @@ export function limparLocalStorage() {
   localStorage.removeItem('authToken')
 }
 
-export function parseJwt() {
+export function infomacesToken() {
   const token = getAuthToken();
   return JSON.parse(Buffer.from(token.split('.')[1], 'base64').toString());
 }

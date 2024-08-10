@@ -1,7 +1,6 @@
 <template>
     <div class="perfilUser">
-        
-        
+
         <div class="valores">
             <div class="aba1"><strong>Vitórias: <p> {{ vitorias }}</p> </strong>
                 <strong>Derotas: <p>{{ derotas }}</p></strong>
@@ -39,7 +38,7 @@
 </template>
 
 <script>
-import { parseJwt, jogosPorPagina } from '@/components/services/api'
+import { infomacesToken, jogosPorPagina } from '@/components/services/api'
 import { ElPagination } from 'element-plus';
 import 'element-plus/dist/index.css';
 
@@ -50,7 +49,7 @@ export default {
 
     data() {
         return {
-            idJogador: parseJwt().id,
+            idJogador: infomacesToken().id,
             currentPage: 1,
             itensPorPagina: 5,
             totalItems: 0,
@@ -107,7 +106,7 @@ export default {
     justify-content: space-evenly;
     align-items: center;
     width: 100%;
-    height: 100vh;
+    height: 92vh;
     background: #D9D9D9;
 }
 

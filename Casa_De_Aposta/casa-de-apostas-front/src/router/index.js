@@ -7,27 +7,32 @@ const router = createRouter({
     {
       path: '/',
       name: 'login',
-      component: () => import('../views/TelaLogin.vue')
+      component: () => import('../views/TelaLogin.vue'),
+      meta: { showHeader: false }
     },
     {
       path: '/cadastro',
       name: 'cadastro',
-      component: () => import('../views/TelaDeCadastro.vue')
+      component: () => import('../views/TelaDeCadastro.vue'),
+      meta: { showHeader: false }
     },
     {
       path: '/perfiladm',
       name: 'perfiladm',
-      component: () => import('../views/PerfilAdm.vue')
+      component: () => import('../views/PerfilAdm.vue'),
+      meta: { showHeader: true }
     },
     {
       path: '/perfilusuario',
       name: 'perfilusuario',
-      component: () => import('../views/PerfilUser.vue')
+      component: () => import('../views/PerfilUser.vue'),
+      meta: { showHeader: true }
     },
     {
       path: '/jogo',
       name: 'jogo',
-      component: () => import('../views/Jogo.vue')
+      component: () => import('../views/Jogo.vue'),
+      meta: { showHeader: true }
     }
   ]
 })
