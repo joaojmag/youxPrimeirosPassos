@@ -69,6 +69,10 @@ export async function buscarTodosJogos() {
   return await api.get('/jogo')
 }
 
+export async function buscarJogoId(id) {
+  return await api.get(`/jogo/${id}`)
+}
+
 export async function iniciarPartida(iniciar) {
   return await api.post('/jogo/comecar', iniciar)
   // {

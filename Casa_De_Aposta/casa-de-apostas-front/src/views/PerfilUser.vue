@@ -1,6 +1,7 @@
 <template>
     <div class="perfilUser">
-
+        
+        
         <div class="valores">
             <div class="aba1"><strong>Vitórias: <p> {{ vitorias }}</p> </strong>
                 <strong>Derotas: <p>{{ derotas }}</p></strong>
@@ -27,13 +28,8 @@
             </span>
         </div>
 
-        <!-- <h2>Perfil do {{ nome }}</h2>
-        <p>Total de jogos {{ totaldeJogos(idJogador) }} </p>
-        <p> Jogos ganhos {{ jogosGanhos(idJogador) }} | Valor recebido R$ {{ valoresGanos(idJogador) }}</p>
-        <p>Jogos perdidos {{ jogosPerdidos(idJogador) }} | Valor perdido R$ -{{ valoresPerdidos(idJogador) }}</p> -->
-
         <div class="paginacao">
-            <el-pagination @current-change="handlePageChange" :current-page="currentPage" :page-size="pageSize"
+            <el-pagination @current-change="handlePageChange" :current-page="currentPage" :page-size="itensPorPagina"
                 layout="prev, pager, next" :total="totalItems">
             </el-pagination>
         </div>
@@ -43,8 +39,7 @@
 </template>
 
 <script>
-import { buscarTodosJogos, parseJwt, jogosPorPagina } from '@/components/services/api'
-import { toRaw } from 'vue';
+import { parseJwt, jogosPorPagina } from '@/components/services/api'
 import { ElPagination } from 'element-plus';
 import 'element-plus/dist/index.css';
 
@@ -55,12 +50,10 @@ export default {
 
     data() {
         return {
-            // nome: parseJwt().name,
-            // jogos: [],
             idJogador: parseJwt().id,
-            currentPage: 1,  // Página atual
-            pageSize: 5,    // Itens por página
-            totalItems: 0,   // Número total de itens
+            currentPage: 1,
+            itensPorPagina: 5,
+            totalItems: 0,
             jogosDoUsuario: [],
             vitoriaEvalores: [],
             vitorias: 0,
@@ -71,44 +64,6 @@ export default {
     },
 
     methods: {
-        // async buscandoTodosJogos() {
-        //     try {
-        //         const buscaDosJogos = await buscarTodosJogos();
-
-        //         this.jogos = buscaDosJogos.data;
-        //     } catch (error) {
-        //         console.log("Erro ao carregar jogadores ", error);
-        //     }
-        // },
-
-        // totaldeJogos(idUser) {
-        //     return this.dadosDoJogo(idUser).length
-        // },
-
-        // jogosGanhos(idJogador) {
-        //     let vitorias = this.dadosDoJogo(idJogador).filter(e => e.vitoria === true)
-        //     return vitorias.length
-        // },
-
-        // jogosPerdidos(idJogador) {
-        //     let derotas = this.dadosDoJogo(idJogador).filter(e => e.vitoria === false)
-        //     return derotas.length
-        // },
-
-        // valoresGanos(idJogador) {
-        //     return this.dadosDoJogo(idJogador)
-        //         .filter(e => e.vitoria === true)
-        //         .reduce((acumulador, numeroAtual) => acumulador + numeroAtual.valorGanho, 0);
-        // },
-        // valoresPerdidos(idJogador) {
-        //     return this.dadosDoJogo(idJogador)
-        //         .filter(e => e.vitoria === false)
-        //         .reduce((acumulador, numeroAtual) => acumulador + numeroAtual.valorDaAposta, 0);
-        // },
-
-        // dadosDoJogo(idUser) {
-        //     return toRaw(this.jogos).filter(e => e.idDoUsuario === idUser);
-        // },
         irJogo() {
             this.$router.push('/jogo')
         },

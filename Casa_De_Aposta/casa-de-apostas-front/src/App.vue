@@ -12,8 +12,8 @@ export default {
 </script>
 
 <template>
-  <!-- <header>
-    <div class="wrapper">
+  <header>
+    <!-- <div class="wrapper">
       <nav>
         <RouterLink to="/">Tela de login</RouterLink>
         <RouterLink to="/cadastro">Tela de cadastro</RouterLink>
@@ -21,8 +21,8 @@ export default {
         <RouterLink to="/perfilusuario">Perfil do Usuário</RouterLink>
         <RouterLink to="/jogo">Jogo</RouterLink>
       </nav>
-    </div>
-  </header> -->
+    </div> -->
+  </header>
   <RouterView />
 </template>
 

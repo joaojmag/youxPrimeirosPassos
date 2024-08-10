@@ -97,6 +97,10 @@ public class JogoService {
         return repository.findAll();
     }
 
+    public Jogo findById(Integer idJogo) {
+        return repository.findById(idJogo).get();
+    }
+
     public PaginacaoDTO paginacao(InputPaginacaoDTO dto) {
         return new PaginacaoDTO(
                 repository.paginacao(dto.id(), 5, (dto.numeroDaPagina() - 1) * 5),

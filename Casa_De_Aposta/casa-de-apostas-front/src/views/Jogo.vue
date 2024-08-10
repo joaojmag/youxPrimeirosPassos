@@ -1,6 +1,6 @@
 <template>
     <div class="calasseJogo">
-        <!-- <h1>Vamos Jogar!!</h1> -->
+
         <form v-if="cabecalho" class="valorAposta" @submit.prevent="comecarPartida">
             <label style="margin-top: 15%;"><strong> Digite o valor da aposta</strong></label>
             <input type="text" id="valor" v-model="valor" required />
@@ -12,7 +12,7 @@
                 <!-- <span v-for="num in jogo" :key="num" :id="num" class="campos" @click="cliqueParaJogar(num)"
                     :class="{ clicado: camposClicados.includes(num) }"></span> -->
                 <span v-for="num in jogo" :key="num" :id="num" class="campos" @click="cliqueParaJogar(num)"
-                    :class="getCampoClass(num)"></span>
+                    :class="verJogo ? getCampoClass(num) : getCampoClassDerrota(num)"></span>
             </div>
 
             <button v-if="this.perdeu !== 'perdeu'" @click="encerrarPartida">FINALIZAR</button>
@@ -24,7 +24,7 @@
 
 
 <script>
-import { iniciarPartida, jogando, parseJwt } from '@/components/services/api'
+import { iniciarPartida, jogando, buscarJogoId, parseJwt } from '@/components/services/api'
 
 
 export default {
@@ -36,7 +36,9 @@ export default {
             idJogo: null,
             valorGanho: 0,
             camposClicados: [],
-            perdeu: ''
+            perdeu: '',
+            verJogo: true,
+            vetJogoBD: []
         }
     },
 
@@ -57,9 +59,7 @@ export default {
                     idDoUsuario: parseJwt().id
                 }
                 const { data } = await iniciarPartida(partida);
-                // console.log('data ->', data)
                 this.idJogo = data
-                // console.log("this.idJogo -> ", this.idJogo);
 
             } catch (error) {
                 console.log("Erro ao criar jogo", error);
@@ -68,8 +68,6 @@ export default {
         },
 
         async encerrarPartida() {
-            // this.cabecalho = !this.cabecalho
-
             const jogo = {
                 posicaoNumClicado: 25,
                 encerrar: true,
@@ -77,21 +75,15 @@ export default {
             }
 
             const { data } = await jogando(jogo);
-            // console.log(data);
             this.valorGanho = data;
-            // console.log("this.valorGanho -> ", this.valorGanho);
-
             this.irUsuario()
         },
 
         async cliqueParaJogar(numero) {
-            // console.log(numero);
 
             if (this.camposClicados.includes(numero)) {
-                alert("Você já clicou nesse campo!");
                 return;
             } else if (this.perdeu === 'perdeu') {
-                alert("Você já perdeu! Clique em Dashboard para voltar ao seu perfil.");
                 return;
             }
 
@@ -102,18 +94,15 @@ export default {
             }
 
             const { data } = await jogando(jogo);
-            if (data === 0) {
-                alert("Você Perdeu")
-                this.camposClicados.push({ numero, status: 'perdeu' }); // Adiciona o campo ao array com status 'perdeu'
-                this.perdeu = 'perdeu';
-                // this.camposClicados = [];
-                // this.cabecalho = !this.cabecalho
-            } else {
-                alert("Parábens você encontrou um diamante!")
-                this.camposClicados.push({ numero, status: 'ganhou' }); // Adiciona o campo ao array com status 'ganhou'
-            }
 
-            this.camposClicados.push(numero);
+            if (data === 0) {
+                this.verJogo = !this.verJogo
+                const jogoBd = await buscarJogoId(this.idJogo);
+                this.vetJogoBD = JSON.parse(jogoBd.data.vetorComJogo);
+                this.perdeu = 'perdeu';
+            } else {
+                this.camposClicados.push({ numero, status: 'ganhou' });
+            }
         },
         getCampoClass(numero) {
             const campo = this.camposClicados.find(c => c.numero === numero);
@@ -126,6 +115,15 @@ export default {
             }
             return '';
         },
+
+        getCampoClassDerrota(numero) {
+            if (this.vetJogoBD[numero] === 0) {
+                return 'perdeu';
+            } else {
+                return 'ganhou';
+            }
+        },
+
         irUsuario() {
             this.$router.push('/perfilusuario')
         },
@@ -154,8 +152,6 @@ export default {
 }
 
 .valorAposta label {
-    /* position: relative; */
-    /* right: 23%; */
     margin-top: 5%;
     margin-bottom: 1%;
     font-size: 2em;

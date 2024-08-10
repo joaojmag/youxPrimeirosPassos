@@ -30,13 +30,19 @@ public class JogoController {
         return jogoService.iniciarPartida(iniciarPartidaDTO);
     }
 
+    @PostMapping("/paginacao")
+    public PaginacaoDTO getPaginas(@RequestBody InputPaginacaoDTO dto) {
+        return jogoService.paginacao(dto);
+    }
+
     @GetMapping
     public List<Jogo> getAllJogo() {
         return jogoService.findAll();
     }
 
-    @PostMapping("/paginacao")
-    public PaginacaoDTO getPaginas(@RequestBody InputPaginacaoDTO dto) {
-        return jogoService.paginacao(dto);
+    @GetMapping("/{id}")
+    public Jogo findById(@PathVariable Integer id) {
+        return jogoService.findById(id);
     }
+
 }
