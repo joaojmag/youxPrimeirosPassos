@@ -54,7 +54,7 @@ export default {
     border: 3px solid #77222d;
     margin: 3%;
     border-radius: 20px;
-    background: #8E2B39;
+    background: #8e2b38f5;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
