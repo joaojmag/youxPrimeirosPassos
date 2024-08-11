@@ -1,8 +1,9 @@
 <template>
     <div class="menuUser">
         <div class="stiloMenu">
-            <div class="menuDiv">
-               Olá {{ nome }}
+            <div class="menuDiv" @click="paraPropagacao($event)">
+                Olá {{ nome }}
+                <p v-if="role === 'ADMIN'" @click="pgAdmin()">Administrar Usuários <img src="../assets/group.svg"> </p>
                 <img title="clique para sair da conta." @click="clicando" src="../assets/logout.svg">
             </div>
         </div>
@@ -16,13 +17,26 @@ export default {
     name: 'MenuUsuario',
     data() {
         return {
-            nome: infomacesToken().name
-
+            nome: infomacesToken().name,
+            role: infomacesToken().roles
         }
     },
     methods: {
         clicando() {
             this.$router.push('/');
+            this.$emit('fecharModal')
+
+        },
+        pgAdmin() {
+            this.$router.push('/perfiladm');
+            this.$emit('fecharModal')
+        },
+
+        voltarMenu() {
+            this.$router.push('/perfilusuario');
+        },
+        paraPropagacao(event) {
+            event.stopPropagation();
         }
     }
 
@@ -49,8 +63,8 @@ export default {
 }
 
 .menuDiv {
-    width: 150px;
-    height: 190px;
+    width: 200px;
+    height: 220px;
     border: 3px solid #77222d;
     margin: 3%;
     border-radius: 20px;
@@ -59,5 +73,13 @@ export default {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    z-index: 10;
+}
+
+.menuDiv p {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
 }
 </style>

@@ -17,7 +17,7 @@ export default {
     openMenu() {
       this.mostar = !this.mostar;
     },
-    voltarMenu(){
+    voltarMenu() {
       this.$router.push('/perfilusuario');
 
     }
@@ -30,15 +30,13 @@ export default {
     <div class="classHeader">
       <h2 title="Voltar para o seu perfil." @click="voltarMenu">BLAZE YOUX</h2>
       <img v-if="mostar" @click="openMenu" src="./assets/accountCircle.svg">
-      <MenuUsuario v-else @click='openMenu' />
+      <MenuUsuario v-else @click='openMenu' @fecharModal="openMenu" />
     </div>
   </header>
+
   <RouterView />
-  <RouterLink to="/">Tela de login</RouterLink>
-  <RouterLink to="/cadastro">Tela de cadastro</RouterLink>
-  <RouterLink to="/perfiladm">Perfil ADM</RouterLink>
-  <RouterLink to="/perfilusuario">Perfil do Usuário</RouterLink>
-  <RouterLink to="/jogo">Jogo</RouterLink>
+
+
 </template>
 
 <style scoped>
@@ -63,7 +61,7 @@ export default {
   cursor: pointer;
 }
 
-#menuUsuario{
+#menuUsuario {
   position: absolute;
   width: 100;
   height: 100vh;
@@ -71,73 +69,29 @@ export default {
 }
 </style>
 
+<!-- Usando slot props -->
+<!-- <router-view v-slot="{ Component }">
+  <transition name="fade" mode="in-out">
+    <component :is="Component" />
+    </transition>
+
+    /* .fade-enter-active,
+    .fade-leave-active {
+      transition: opacity 0.5s ease;
+      } */
+      
+      /* .fade-leave-active in <2.1.8 */
+      /* .fade-enter,
+      .fade-leave-to {
+        opacity: 0;
+        } */
+    </router-view> -->
+
+
 <!-- <nav>
-  <RouterLink to="/">Tela de login</RouterLink>
+      <RouterLink to="/">Tela de login</RouterLink>
   <RouterLink to="/cadastro">Tela de cadastro</RouterLink>
   <RouterLink to="/perfiladm">Perfil ADM</RouterLink>
   <RouterLink to="/perfilusuario">Perfil do Usuário</RouterLink>
   <RouterLink to="/jogo">Jogo</RouterLink>
 </nav> -->
-<!-- <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
-</style> -->
