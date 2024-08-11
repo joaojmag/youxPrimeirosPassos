@@ -26,6 +26,7 @@ public class TokenService {
                     .withSubject(usuario.getEmail())
                     .withClaim("id", usuario.getId())
                     .withClaim("name", usuario.getNome())
+                    .withClaim("roles", usuario.getRole().toString())
                     .withExpiresAt(genExpirationDate())
                     .sign(algorithm);
             return token;
