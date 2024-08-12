@@ -19,6 +19,12 @@
                 <p>Quantidade de Acertos</p>
                 <p>Resultado</p>
             </div>
+            <span v-if="jogosDoUsuario.length === 0" class="corpo">
+                <p> ----- </p>
+                <p>R$ -----</p>
+                <p>-----</p>
+                <p>-----</p>
+            </span>
             <span class="corpo" v-for="item in jogosDoUsuario" :key="item.id">
                 <p>{{ item.dataJogo }}</p>
                 <p>R$ {{ item.valorDaAposta.toFixed(2) }}</p>
@@ -81,18 +87,26 @@ export default {
             this.totalItems = data.totalPaginas;
             this.jogosDoUsuario = data.jogos;
             this.vitoriaEvalores = data.vitoriasEvalore;
-            this.vitorias = data.vitoriasEvalore[1]?.count;
-            this.derotas = data.vitoriasEvalore[0]?.count;
-            this.saldo = data.vitoriasEvalore[1]?.sum;
+
+            if (data.vitoriasEvalore[0]?.vitoria) {
+                this.vitorias = data.vitoriasEvalore[0]?.count == null ? this.vitorias = 0 : data.vitoriasEvalore[0]?.count;
+                this.derotas = data.vitoriasEvalore[1]?.count == null ? this.derotas = 0 : data.vitoriasEvalore[1]?.count;
+                this.saldo = data.vitoriasEvalore[0]?.sum == null ? this.saldo = 0 : data.vitoriasEvalore[0]?.sum;
+            } else {
+                this.vitorias = data.vitoriasEvalore[1]?.count == null ? this.vitorias = 0 : data.vitoriasEvalore[1]?.count;
+                this.derotas = data.vitoriasEvalore[0]?.count == null ? this.derotas = 0 : data.vitoriasEvalore[0]?.count;
+                this.saldo = data.vitoriasEvalore[1]?.sum == null ? this.saldo = 0 : data.vitoriasEvalore[1]?.sum;
+            }
         },
         visualizar() {
             this.ver = !this.ver
         }
+
     },
 
     mounted() {
-        // this.buscandoTodosJogos();
         this.pegarJogosPorPagina();
+        // this.inicializarDados();
     }
 
 }

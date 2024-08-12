@@ -8,6 +8,8 @@
         </form>
 
         <div v-if="!cabecalho" class="jogando">
+
+            <span v-if="!verJogo" id="derrota">Você Perdeu &#128533 </span>
             <div class="jogo">
                 <!-- <span v-for="num in jogo" :key="num" :id="num" class="campos" @click="cliqueParaJogar(num)"
                     :class="{ clicado: camposClicados.includes(num) }"></span> -->
@@ -16,7 +18,7 @@
             </div>
 
             <button v-if="this.perdeu !== 'perdeu'" @click="encerrarPartida">FINALIZAR</button>
-            <button v-else @click="encerrarPartida">Dashboard</button>
+            <button v-else @click="irUsuario">Dashboard</button>
         </div>
 
     </div>
@@ -228,4 +230,9 @@ export default {
     background-size: 5em;
     cursor: not-allowed;
 }
+
+#derrota {
+    font-size: 2em;
+}
+
 </style>
